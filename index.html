@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drew Godwin — Command Center</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#6c5ce7;--accent2:#00cec9;--bg:#0a0a0f;--card:#12121a;--card-hover:#1a1a28;--text:#e8e8f0;--muted:#8888a0;--success:#00b894;--warning:#fdcb6e;--danger:#e17055;--border:#2a2a3a;--radius:12px}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);padding:20px;min-height:100vh}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.header h1{font-size:1.6em;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .date{color:var(--muted);font-size:.9em}
+.video-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.85em}
+.video-item:last-child{border-bottom:none}
+.video-icon{color:var(--accent);font-size:1.1em;flex-shrink:0}
+.video-name{font-weight:500}
+.video-est{color:var(--muted);font-size:.8em}
+.workout-step{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.workout-step:last-child{border-bottom:none}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:700;flex-shrink:0}
+.step-num.done{background:var(--success)}
+.step-label{font-size:.9em}
+.step-detail{color:var(--muted);font-size:.8em}
+.upcoming-card{padding:10px;background:rgba(255,255,255,.02);border-radius:8px;margin-top:8px;border-left:3px solid var(--muted)}
+.upcoming-card .day{font-weight:600;font-size:.8em;color:var(--accent2)}
+.upcoming-card .desc{font-size:.75em;color:var(--muted)}
+.today-highlight{border:2px solid var(--accent2);position:relative}
+.today-highlight::before{content:'TODAY';position:absolute;top:-8px;right:12px;background:var(--accent2);color:#000;padding:2px 8px;border-radius:4px;font-size:.65em;font-weight:700;letter-spacing:1px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin-bottom:16px}
+.grid-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;width:100%}
+.grid-3col .card{width:100%;min-width:0;overflow-wrap:break-word}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:border-color .2s}
+.card:hover{border-color:var(--accent)}
+.card h2{font-size:1em;color:var(--accent2);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.card h2 .icon{font-size:1.2em}
+.row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.row:last-child{border-bottom:none}
+.row-label{color:var(--muted);font-size:.85em}
+.row-value{font-weight:600;font-size:.9em}
+.progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:6px}
+.progress-fill{height:100%;border-radius:3px;transition:width .5s}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:.85em;font-weight:600;transition:all .2s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#7c6ff7;transform:translateY(-1px)}
+.btn-success{background:var(--success);color:#fff}
+.btn-success:hover{background:#00d2a0}
+.btn-warning{background:var(--warning);color:#000}
+.btn-small{padding:5px 10px;font-size:.75em}
+.checklist-item{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:.9em}
+.checklist-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+.checklist-item.checked{text-decoration:line-through;color:var(--muted)}
+.interview-card{background:linear-gradient(135deg,rgba(108,92,231,.15),rgba(0,206,201,.1));border:1px solid var(--accent);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.interview-card h3{font-size:.95em;margin-bottom:6px}
+.interview-card .meta{color:var(--muted);font-size:.8em;margin-bottom:8px}
+.interview-card .status{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7em;font-weight:700;text-transform:uppercase}
+.status-ready{background:var(--success);color:#fff}
+.status-pending{background:var(--warning);color:#000}
+.status-done{background:var(--muted);color:#fff}
+.timer-display{font-size:2.4em;font-weight:700;text-align:center;margin:12px 0;font-variant-numeric:tabular-nums;color:var(--accent2)}
+.timer-label{text-align:center;color:var(--muted);font-size:.8em;text-transform:uppercase;letter-spacing:2px}
+.timer-controls{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.timer-btn{padding:8px 20px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:.85em;transition:all .2s}
+.timer-start{background:var(--success);color:#fff}
+.timer-stop{background:var(--danger);color:#fff}
+.timer-reset{background:var(--border);color:var(--text)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.stat{text-align:center;padding:12px;background:rgba(255,255,255,.03);border-radius:8px}
+.stat .number{font-size:1.8em;font-weight:700;color:var(--accent2)}
+.stat .label{font-size:.7em;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.ccna-path{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ccna-node{padding:4px 10px;border-radius:6px;font-size:.7em;font-weight:600;background:var(--border);color:var(--muted)}
+.ccna-node.done{background:rgba(0,184,148,.2);color:var(--success)}
+.ccna-node.current{background:rgba(108,92,231,.3);color:var(--accent);border:1px solid var(--accent)}
+.ccna-node.upcoming{background:rgba(255,255,255,.03);color:var(--muted)}
+.full-width{grid-column:1/-1}
+.note{font-size:.8em;color:var(--muted);padding:8px 12px;background:rgba(255,255,255,.02);border-radius:8px;margin-top:8px;border-left:3px solid var(--accent)}
+
+.workout-thumbnail{display:block;width:100%;height:120px;border-radius:8px;margin:10px 0;background:#1a1a28;border:2px solid var(--border);transition:all .2s;cursor:pointer;text-align:center;line-height:120px;color:var(--accent2);font-size:.9em;text-decoration:none}
+.workout-thumbnail:hover{border-color:var(--accent);transform:scale(1.02);box-shadow:0 4px 20px rgba(108,92,231,.3)}
+.workout-thumbnail .play-icon{font-size:2em;display:block;margin-bottom:4px}
+.workout-thumbnail .video-name{font-size:.8em;color:var(--text);font-weight:600}
+.workout-thumbnail .video-day{font-size:.7em;color:var(--accent2)}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+<div>
+<h1>⚡ COMMAND CENTER</h1>
+<div style="color:var(--muted);font-size:.8em;margin-top:4px">Drew Godwin — Operations Dashboard</div>
+</div>
+<div class="date" id="currentDate"></div>
+</div>
+
+
+<!-- TOP ROW: Interviews + Stats -->
+<div class="grid">
+<div class="interview-card">
+<h3>🔴 PHONE SCREEN: R1 RCM — TODAY @ 2:40 PM</h3>
+<div class="meta">Role: Customer Service Rep — Patient Registration | Location: Ascension St. Vincent's ER Arlington | $16–21/hr</div>
+<div style="font-size:.8em;color:var(--muted);margin-bottom:8px">📞 They call from 312 area code. Have your phone charged and nearby. No camera needed.</div>
+<div style="font-size:.85em;margin-bottom:6px"><strong>Phone Screen Prep — DO NOW:</strong></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review your 3 STAR stories (scroll down)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Research R1 RCM — revenue cycle, healthcare customer service</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Prepare: "Tell me about yourself" — 2 min pitch</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Prepare questions to ask them</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Find a quiet place with good signal</span></div>
+<div class="note">⚠️ They require: open availability (day/evening/overnight), 8–12 hr shifts, holiday/weekend availability. Be ready to confirm you can meet this.</div>
+</div>
+
+<div class="interview-card">
+<h3>🟡 IN-PERSON INTERVIEW: Aschi Heart & Vascular Center</h3>
+<div class="meta">Friday, Nov 14 at 12:30 PM — Ascension St. Vincent's</div>
+<div style="font-size:.85em;margin-bottom:6px"><strong>Next Steps:</strong></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Confirm ride with brother by tomorrow evening</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Plan route — leave 30 min early</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Print copies of resume</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Research clinic — services, location</span></div>
+<div class="note">🚗 Car issue noted — lock in ride by Tuesday evening</div>
+</div>
+</div>
+
+<!-- STATS ROW -->
+<div class="grid">
+<div class="card">
+<h2><span class="icon">📊</span> WEEK OVERVIEW</h2>
+<div class="stats-grid">
+<div class="stat"><div class="number">0</div><div class="label">Days to R1</div></div>
+<div class="stat"><div class="number">4</div><div class="label">Days to Aschi</div></div>
+<div class="stat"><div class="number">2%</div><div class="label">CCNA Progress</div></div>
+</div>
+</div>
+
+<div class="card">
+<h2><span class="icon">🎯</span> TODAY'S FOCUS AREAS</h2>
+<div class="row"><span class="row-label">Interview Prep</span><span class="row-value" style="color:var(--danger)">HIGH PRIORITY</span></div>
+<div class="row"><span class="row-label">CCNA Study</span><span class="row-value" style="color:var(--warning)">Restart Week 1</span></div>
+<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">30 min daily</span></div>
+<div class="row"><span class="row-label">Nutrition</span><span class="row-value" style="color:var(--success)">No sugar rule</span></div>
+<div class="row"><span class="row-label">Job Applications</span><span class="row-value" style="color:var(--accent)">5/week target</span></div>
+</div>
+</div>
+
+<!-- DAILY CHECKLIST -->
+<div class="grid">
+<div class="card">
+<h2><span class="icon">✅</span> DAILY CHECKLIST — CHECK OFF AS YOU GO</h2>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 9:00 AM — Wake up, 16 oz water, 5 min stretch</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 9:30 AM — CCNA Study Block 1 (4 videos, Pomodoro x2)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 10:30 AM — T25 Alpha Cardio (25 min, NO JUMPING)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 11:00 AM — Breakfast (plate method, 30g+ protein)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 11:30 AM — R1 Interview Prep (90 min)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 1:00 PM — Lunch (plate method)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 1:30 PM — Walking Pad (10–15 min)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 2:00 PM — CCNA Review (30 min)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📞 2:40 PM — 📞 R1 PHONE SCREEN</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ Dinner by 6 PM, nothing after 6 PM</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 Screens off by 9:30 PM</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 Bedtime by 10:30 PM</span></div>
+<div class="note">💡 ADHD tip: Each completed item is a dopamine hit. Don't skip the small wins. If you fall off, restart at the next block — don't abandon the whole day.</div>
+</div>
+</div>
+
+<div class="card">
+<h2><span class="icon">🍽️</span> YOUR FOOD — WHAT YOU HAVE + HOW TO USE IT</h2>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:10px">Right now you have: chicken, rice, vegetables, water. That's enough. Here's how to structure it:</div>
+<div class="row"><span class="row-label">Protein</span><span class="row-value">Chicken — grilled, baked, or pan-seared</span></div>
+<div class="row"><span class="row-label">Grain</span><span class="row-value">Rice — brown rice preferred</span></div>
+<div class="row"><span class="row-label">Veg</span><span class="row-value">Whatever vegetables you have</span></div>
+<div class="row"><span class="row-label">Drink</span><span class="row-value">Water only — NO sugary drinks</span></div>
+<div class="note" style="margin-top:8px">
+<strong>Plate method with what you have:</strong><br>
+1/2 plate vegetables · 1/4 plate chicken · 1/4 plate rice<br>
+<br>
+<strong>No sugar rule:</strong> Water only. No soda, juice, or sweet tea.<br>
+<strong>Protein target:</strong> Make the chicken portion about palm-sized (4–6 oz) per meal.<br>
+<strong>Last meal:</strong> Finish dinner by 6 PM — no eating after.<br>
+<strong>Water:</strong> Drink 16 oz when you wake up. Sip water throughout the day.
+</div>
+</div>
+<!-- CCNA PROGRESS TRACKER -->
+<div class="grid">
+<div class="card full-width">
+<h2><span class="icon">🎓</span> CCNA PROGRESS — SUMMER OF CCNA (NetworkChuck) — FULL RESTART</h2>
+<div style="font-size:.8em;color:var(--muted);margin-bottom:8px">Status: STARTING OVER — Week 1. Exam by Feb 7-10.</div>
+<div class="ccna-path">
+<div class="ccna-node current">01 Network Models</div>
+<div class="ccna-node upcoming">02 Ethernet</div>
+<div class="ccna-node upcoming">03 IP & Subnetting</div>
+<div class="ccna-node upcoming">04 Router Config</div>
+<div class="ccna-node upcoming">05 DHCP & DNS</div>
+<div class="ccna-node upcoming">06 SSH & NTP</div>
+<div class="ccna-node upcoming">07 SNMP</div>
+<div class="ccna-node upcoming">08 ACLs</div>
+<div class="ccna-node upcoming">09 VLANs</div>
+<div class="ccna-node upcoming">10 STP</div>
+<div class="ccna-node upcoming">11 Routing</div>
+<div class="ccna-node upcoming">12 IPv6</div>
+<div class="ccna-node upcoming">13 OSPF</div>
+<div class="ccna-node upcoming">14 FHRP</div>
+<div class="ccna-node upcoming">15 QoS</div>
+<div class="ccna-node upcoming">16 Wireless</div>
+<div class="ccna-node upcoming">17 Automation</div>
+<div class="ccna-node upcoming">18 Final</div>
+</div>
+<div style="margin-top:12px">
+<div style="display:flex;justify-content:space-between;font-size:.8em;color:var(--muted)"><span>Week 1 — Network Models</span><span>Target: Complete by Jan 25, Exam Feb 7-10</span></div>
+<div class="progress-bar"><div class="progress-fill" style="width:5%;background:linear-gradient(90deg,var(--accent),var(--accent2))"></div></div>
+<
+<div style="margin-top:16px">
+<div style="font-size:.85em;color:var(--accent2);font-weight:600;margin-bottom:8px">📅 THIS WEEK'S CCNA SCHEDULE:</div>
+
+<div class="upcoming-card">
+<div class="day">Mon (Nov 10) — TODAY ✅</div>
+<div class="desc">Describing Network Communication with Models.mp4 → Determine Speed with Bits and Bytes.mp4 → IP Addresses...Why Do We Need Them.mp4 → Private and Public IP Addresses.mp4</div>
+</div>
+<div class="upcoming-card">
+<div class="day">Tue (Nov 11)</div>
+<div class="desc">Defining Networks with Subnet Masks.mp4 → Creating a Network Diagram.mp4 → The Importance of Network Standards (Ethernet).mp4 → Copper Cabling Standards and Characteristics.mp4</div>
+</div>
+<div class="upcoming-card">
+<div class="day">Wed (Nov 12)</div>
+<div class="desc">Understanding Fiber Optic Cable Spectrum.mp4 → Using Straight-through, Crossover, and MDI-X.mp4 → Understanding MAC Addresses and Frames.mp4 → How Switches Do What They Do.mp4</div>
+</div>
+<div class="upcoming-card">
+<div class="day">Thu (Nov 13)</div>
+<div class="desc">Switch Port Numbering and CAM Table.mp4 → Exploring MAC Address Tables.mp4 → Using CAM Table to Track Down Devices.mp4 → Using Cisco Discovery Protocol.mp4 → Using Link Layer Discovery Protocol.mp4</div>
+</div>
+<div class="upcoming-card">
+<div class="day">Fri (Nov 14)</div>
+<div class="desc">REVIEW hardest videos from week + start Packet Tracer lab (Castle Rysen videos)</div>
+</div>
+</div>
+
+<div class="note" style="margin-top:12px">
+📁 All 100+ videos are in: <code style="background:var(--border);padding:2px 6px;border-radius:4px;font-size:.75em">C:\Users\KM\Videos\CCNA Vids</code><br>
+✏️ Write 3 things you learned after each video. Watch at 1.25x speed.<br>
+🔑 If a video doesn't fit perfectly, watch it anyway — it'll help fill gaps.
+</div>
+</div>
+</div>
+
+<!-- TIMER + FITNESS -->
+<div class="grid-3col">
+<div class="card">
+<h2><span class="icon">⏱️</span> STUDY TIMER (Pomodoro)</h2>
+<div class="timer-label">Focus Session</div>
+<div class="timer-display" id="timerDisplay">25:00</div>
+<div class="timer-controls">
+<button class="timer-btn timer-start" onclick="startTimer()">Start</button>
+<button class="timer-btn timer-stop" onclick="stopTimer()">Stop</button>
+<button class="timer-btn timer-reset" onclick="resetTimer()">Reset</button>
+</div>
+<div class="note" style="margin-top:10px">Use 25-min focus + 5-min break. After 4 cycles, take 15–30 min break. ADHD-friendly: if 25 min feels too long, start with 15.</div>
+</div>
+
+<div class="card">
+<h2><span class="icon">💪</span> <span id="workoutTitle">TODAY'S WORKOUT — LOADING...</span></h2>
+<div id="workoutThumbnail"></div>
+<div class="workout-step">
+<div class="step-num">1</div>
+<div><div class="step-label">Warm-up</div><div class="step-detail">Follow the video's built-in warm-up (first ~2 min)</div></div>
+</div>
+<div class="workout-step">
+<div class="step-num">2</div>
+<div><div class="step-label">Workout Block</div><div class="step-detail">Follow along with the video (15-25 min)</div></div>
+</div>
+<div class="workout-step">
+<div class="step-num">3</div>
+<div><div class="step-label">Cool-down</div><div class="step-detail">Follow the video's built-in cool-down (last ~3 min)</div></div>
+</div>
+
+<div class="note" style="margin-top:10px">
+✅ <strong>T25 Alpha Phase 1</strong> - designed for beginners<br>
+⚠️ <strong>NO JUMPING - substitute every jump with a march or step.</strong><br>
+📁 Video location: <code style="background:var(--border);padding:2px 6px;border-radius:4px;font-size:.75em">C:\Users\KM\Videos\Workouts\T25\Videos\</code><br>
+📅 <strong>This week's T25 schedule:</strong><br>
+&nbsp;&nbsp;Mon/Thu: Cardio / Lower Focus<br>
+&nbsp;&nbsp;Tue: Ab Intervals<br>
+&nbsp;&nbsp;Wed: Cardio<br>
+&nbsp;&nbsp;Fri: Speed 1.0<br>
+&nbsp;&nbsp;Sat: Total Body Circuit<br>
+&nbsp;&nbsp;Sun: Rest or Stretch
+</div>
+</div>
+
+<!-- INTERVIEW STAR STORIES -->
+<div class="card">
+<h2><span class="icon">📝</span> STAR STORIES — ANSWERING BEHAVIORAL QUESTIONS</h2>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:10px"><strong>What is STAR?</strong> It's a framework for answering "Tell me about a time when..." interview questions. Each story has 4 parts:</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px">
+<div style="background:rgba(108,92,231,.15);padding:10px;border-radius:8px"><strong style="color:var(--accent)">S</strong><br><span style="font-size:.8em;color:var(--muted)">Situation: Set the scene</span></div>
+<div style="background:rgba(0,206,201,.15);padding:10px;border-radius:8px"><strong style="color:var(--accent2)">T</strong><br><span style="font-size:.8em;color:var(--muted)">Task: What needed to happen</span></div>
+<div style="background:rgba(0,184,148,.15);padding:10px;border-radius:8px"><strong style="color:var(--success)">A</strong><br><span style="font-size:.8em;color:var(--muted)">Action: What YOU did</span></div>
+<div style="background:rgba(253,203,110,.15);padding:10px;border-radius:8px"><strong style="color:var(--warning)">R</strong><br><span style="font-size:.8em;color:var(--muted)">Result: The outcome</span></div>
+</div>
+<div style="font-size:.8em;color:var(--muted);margin-bottom:10px">Write these out fully. Memorize the structure, not the exact words. Speak naturally.</div>
+
+<div style="margin-bottom:12px">
+<div style="font-weight:600;color:var(--accent);margin-bottom:6px">Story 1: Problem Solved Under Pressure</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>S</strong> — Delaware North, 50,000 attendee event, POS system crashed</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>T</strong> — Guests couldn't check out, long lines forming, event reputation at risk</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>A</strong> — Stayed calm, switched to manual processing, coordinated with team, kept guests informed</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>R</strong> — Got everyone checked out, event ended smoothly, supervisor praised composure</div>
+</div>
+
+<div style="margin-bottom:12px">
+<div style="font-weight:600;color:var(--accent);margin-bottom:6px">Story 2: Leadership / Initiative</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>S</strong> — Maximus Federal, working in a team where no one was stepping up</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>T</strong> — Needed to improve team performance and workflow</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>A</strong> — Took initiative to organize the team, created structure, mentored peers</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>R</strong> — First person promoted to Mentor role, team performance improved</div>
+</div>
+
+<div style="margin-bottom:12px">
+<div style="font-weight:600;color:var(--accent);margin-bottom:6px">Story 3: Working Under High Volume / Deadlines</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>S</strong> — Tax Defense Network, managing 250+ clients with high-stakes deadlines</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>T</strong> — Needed to handle massive volume accurately under pressure</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>A</strong> — Organized workflow, prioritized deadlines, maintained accuracy under stress</div>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:4px"><strong>R</strong> — Met all deadlines, maintained quality, built reputation for reliability</div>
+</div>
+<div class="note">💡 For R1: They care about customer service, accuracy, multi-system work, and staying calm under pressure. Your STAR stories hit all of these.</div>
+</div>
+</div>
+
+<script>
+// Date display
+function updateDate(){const d=new Date();const opts={weekday:'long',year:'numeric',month:'long',day:'numeric'};document.getElementById('currentDate').textContent=d.toLocaleDateString('en-US',opts)}updateDate()
+
+// Checkbox toggle
+function toggleCheck(el){const cb=el.querySelector('input[type=checkbox]');cb.checked=!cb.checked;el.classList.toggle('checked',cb.checked);saveChecklist()}
+
+// Timer
+let timerInterval=null, timerSeconds=25*60, timerRunning=false
+function updateDisplay(){const m=Math.floor(timerSeconds/60);const s=timerSeconds%60;document.getElementById('timerDisplay').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+function startTimer(){if(timerRunning)return;timerRunning=true;timerInterval=setInterval(()=>{if(timerSeconds<=0){clearInterval(timerInterval);timerRunning=false;alert('Focus session complete! Take a 5 min break.')}else{timerSeconds--;updateDisplay()}},1000)}
+function stopTimer(){clearInterval(timerInterval);timerRunning=false}
+function resetTimer(){stopTimer();timerSeconds=25*60;updateDisplay()}
+updateDisplay()
+
+// Save checklist state to localStorage
+function saveChecklist(){const items=document.querySelectorAll('.checklist-item input');const state=[];items.forEach(i=>state.push(i.checked));localStorage.setItem('dailyChecklist',JSON.stringify(state))}
+function loadChecklist(){try{const saved=JSON.parse(localStorage.getItem('dailyChecklist'));if(saved){const items=document.querySelectorAll('.checklist-item input');saved.forEach((v,i)=>{if(items[i]){items[i].checked=v;items[i].parentElement.classList.toggle('checked',v)}})}}catch(e){}}
+loadChecklist()
+
+// Reset checklist daily at midnight
+const today=new Date().toDateString();const savedDate=localStorage.getItem('checklistDate');if(savedDate&&savedDate!==today){localStorage.removeItem('dailyChecklist');location.reload()}localStorage.setItem('checklistDate',today)
+
+// Today's workout video selector
+const workoutVideos = [
+  { name: 'Cardio', file: 'Alpha - Cardio.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Cardio.m4v' },
+  { name: 'Ab Intervals', file: 'Alpha - Ab Intervals.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Ab%20Intervals.m4v' },
+  { name: 'Cardio', file: 'Alpha - Cardio.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Cardio.m4v' },
+  { name: 'Lower Focus', file: 'Alpha - Lower Focus.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Lower%20Focus.m4v' },
+  { name: 'Speed 1.0', file: 'Alpha - Speed 1.0.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Speed%201.0.m4v' },
+  { name: 'Total Body Circuit', file: 'Alpha - Total Body Circuit.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Total%20Body%20Circuit.m4v' },
+  { name: 'Stretch', file: 'Other - Stretch.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Other%20-%20Stretch.m4v' }
+];
+
+function showTodayWorkout() {
+  const day = new Date().getDay();
+  const w = workoutVideos[day];
+  document.getElementById('workoutTitle').textContent = "TODAY'S WORKOUT - " + w.name.toUpperCase();
+  document.getElementById('workoutThumbnail').innerHTML = '<a href="' + w.path + '" class="workout-thumbnail" target="_blank"><div class="play-icon">▶</div><div class="video-name">' + w.name + '</div><div class="video-day">Click to open — ' + w.file + '</div></a>';
+}
+showTodayWorkout();
+</script>
+
+
+</body>
+</html>
