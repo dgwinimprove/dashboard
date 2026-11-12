@@ -48,6 +48,9 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .btn-warning{background:var(--warning);color:#000}
 .btn-small{padding:5px 10px;font-size:.75em}
 .checklist-item{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:.9em}
+.checklist-item .timestamp{color:var(--accent);font-weight:700;font-size:.85em;min-width:75px;text-align:right;margin-right:8px}
+.checklist-item .task-text{flex:1}
+.checklist-item input[type="checkbox"]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex-shrink:0}
 .checklist-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
 .checklist-item.checked{text-decoration:line-through;color:var(--muted)}
 .interview-card{background:linear-gradient(135deg,rgba(108,92,231,.15),rgba(0,206,201,.1));border:1px solid var(--accent);border-radius:var(--radius);padding:16px;margin-bottom:12px}
@@ -148,15 +151,17 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="grid">
 <div class="card">
 <h2><span class="icon">✅</span> TODAY — DONE INTERVIEWS, NOW STRENGTHEN (Nov 12)</h2>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🧘 Morning stretch (10 min — tap button above)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>💪 T25 Cardio workout (today's scheduled workout)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ EAT — plate method: chicken, rice, vegetables (right now!)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🎓 CCNA Study Block 2 — 4:00 PM (4:00–5:00 PM)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📹 Fiber Optic, Straight-through cables, MAC addresses, switches</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>✏️ Write 3 takeaways after each video</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📱 Follow up with Pareto — ask about 2nd interview timeline</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🧘 6:00 PM — Wind down, no studying</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 10:00 PM — Sleep for tomorrow</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">12:10 PM</span><span class="task-text">🧘 Morning stretch (10 min — tap button above)</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">12:20 PM</span><span class="task-text">💪 T25 Cardio workout (30 min)</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">12:50 PM</span><span class="task-text">🫧 Cool down, hydrate</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">1:00 PM</span><span class="task-text">🍽️ EAT — plate method: chicken, rice, vegetables (30–40 min)</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">1:45 PM</span><span class="task-text">💧 Hydrate, brief rest (15 min)</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">2:00 PM</span><span class="task-text">🎓 CCNA Study Block 2 — Fiber Optic, Straight-through cables, MAC addresses, switches</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">4:50 PM</span><span class="task-text">✏️ Write 3 takeaways after each video</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">5:00 PM</span><span class="task-text">📱 Follow up with Pareto — send email, ask about 2nd interview timeline</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">6:00 PM</span><span class="task-text">🧘 Wind down, no studying</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">9:30 PM</span><span class="task-text">📵 Sleep prep, no screens</span><input type="checkbox"></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><span class="timestamp">10:00 PM</span><span class="task-text">😴 Sleep</span><input type="checkbox"></div>
 <div class="note">💡 Great day — you crushed two interviews. Now refuel and build your knowledge. CCNA is the ticket that opens doors. Every video watched is progress.</div>
 </div>
 </div>
