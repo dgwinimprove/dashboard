@@ -89,7 +89,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="header">
 <div>
 <h1>⚡ COMMAND CENTER</h1>
-<div style="color:var(--muted);font-size:.8em;margin-top:4px">Drew Godwin — Operations Dashboard</div>
+<div style="color:var(--muted);font-size:.8em;margin-top:4px">Drew Godwin — Personal Growth Ecosystem</div>
 </div>
 <div class="date" id="currentDate"></div>
 </div>
@@ -98,38 +98,35 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <!-- TOP ROW: Interviews + Stats -->
 <div class="grid">
 
-<!-- Ashchi — TODAY -->
-<div class="interview-card" style="border-color:var(--danger);background:linear-gradient(135deg,rgba(225,112,85,.15),rgba(253,203,110,.08))">
-<h3>🚨 ASHCHI HEART & VASCULAR — INTERVIEW: TODAY @ 12:00 PM</h3>
+<!-- Ashchi — DONE -->
+<div class="interview-card" style="border-color:var(--success);background:linear-gradient(135deg,rgba(0,184,148,.15),rgba(0,206,201,.08))">
+<h3 style="text-decoration:line-through;opacity:.7">✅ ASHCHI HEART & VASCULAR — COMPLETED</h3>
 <div class="meta">IT Support Specialist (On-Site Help Desk) — 3900 University Blvd S, Jacksonville, FL 32216 | $40K–$50K</div>
-<div style="font-size:.85em;margin-bottom:6px"><strong>🔴 IT'S TODAY — Arrive by 11:45 AM (leave 11:15)</strong></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🚗 Leave 11:15 AM from Orange Park to Jax</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>👔 Business casual — lay out clothes now</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📄 Print 3 copies of resume</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🚗 Confirm ride with brother</span></div>
-<div class="note">🚗 Ride confirmed | Dress: Business casual | 45-50 min drive</div>
+<div class="status status-done" style="margin-top:6px">COMPLETED — WAITING FOR RESPONSE</div>
+<div class="note" style="margin-top:8px">💼 Prep topics: TCP/IP, DNS, VPN, AD, GPO, help desk tickets</div>
 </div>
 
-<!-- Cook Tech — TOMORROW -->
-<div class="interview-card" style="border-color:var(--warning);background:linear-gradient(135deg,rgba(253,203,110,.1),rgba(108,92,231,.05))">
-<h3>📞 COOK TECHNOLOGY — PHONE INTERVIEW</h3>
+<!-- Cook Tech — TODAY -->
+<div class="interview-card today-highlight" style="border-color:var(--danger);background:linear-gradient(135deg,rgba(225,112,85,.15),rgba(253,203,110,.08))">
+<h3>📞 COOK TECHNOLOGY — PHONE INTERVIEW — TODAY @ 9:30 AM</h3>
 <div class="meta">📅 Nov 12 (Thursday) — 9:30 AM to 10:00 AM EST | IT Smart Hands Field Technician | $17–$25/hr + mileage</div>
-<div style="font-size:.85em;margin-bottom:6px"><strong>📋 Prep Notes:</strong></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review: structured cabling, network troubleshooting, data cabling</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Prepare: personal tool kit (punch tool, toner, crimper, laptop)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review: hardware installs, field service experience</span></div>
-<div class="note">⚠️ 1099 contractor — requires personal tool kit, reliable vehicle | Immediately followed by Pareto</div>
+<div style="font-size:.85em;margin-bottom:6px"><strong>🔴 IT'S TODAY — Be ready by 9:20 AM</strong></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📱 Phone charged, quiet space ready</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🔧 Know your tool kit: punch tool, toner, crimper, laptop</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📖 Review: structured cabling, network troubleshooting, data cabling</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🗣️ Prep: personal tool kit, reliable vehicle, 1099 contractor terms</span></div>
+<div class="note">⚠️ 1099 contractor — requires personal tool kit, reliable vehicle | Immediately followed by Pareto at 10:15</div>
 </div>
 
-<!-- Pareto — TOMORROW -->
-<div class="interview-card" style="border-color:var(--accent2);background:linear-gradient(135deg,rgba(0,206,201,.1),rgba(0,184,148,.05))">
-<h3>📹 PARETO CLINIC — VIDEO INTERVIEW</h3>
+<!-- Pareto — TODAY -->
+<div class="interview-card today-highlight" style="border-color:var(--warning);background:linear-gradient(135deg,rgba(253,203,110,.15),rgba(225,112,85,.05))">
+<h3>📹 PARETO CLINIC — VIDEO INTERVIEW — TODAY @ 10:15 AM</h3>
 <div class="meta">📅 Nov 12 (Thursday) — 10:15 AM to 10:45 AM EST | Medical Call Center Representative | $16–$18/hr | In-Person (Jax, FL)</div>
-<div style="font-size:.85em;margin-bottom:6px"><strong>📋 Prep Notes:</strong></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review: HIPAA compliance, medical office procedures</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Prepare: scheduling, confirming, canceling appointments</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Practice: professional phone demeanor, high-volume call scenarios</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review: AthenaOne/Weave (EHR systems) if familiar, insurance verification</span></div>
+<div style="font-size:.85em;margin-bottom:6px"><strong>🟡 RIGHT AFTER COOK — Keep phone charged</strong></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📹 Test camera, lighting, quiet background</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📖 Review: HIPAA compliance, medical office procedures</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🗣️ Prep: scheduling, confirming, canceling appointments</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🗣️ Practice: professional phone demeanor, high-volume call scenarios</span></div>
 <div class="note">📹 VIDEO INTERVIEW — test camera, lighting, quiet background before call | Keep phone charged after Cook</div>
 </div>
 </div>
@@ -140,117 +137,132 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <h2><span class="icon">📊</span> WEEK OVERVIEW</h2>
 <div class="stats-grid">
 <div class="stat"><div class="number" style="color:var(--success)">✅</div><div class="label">R1 Done</div></div>
-<div class="stat"><div class="number" style="color:var(--danger)">🚨</div><div class="label">Ashchi TODAY</div></div>
-<div class="stat"><div class="number">2</div><div class="label">Thu Interviews</div></div>
+<div class="stat"><div class="number" style="color:var(--success)">✅</div><div class="label">Ashchi Done</div></div>
+<div class="stat"><div class="number" style="color:var(--danger)">📞📹</div><div class="label">2 Interviews Today</div></div>
 </div>
 </div>
 
 <div class="card">
 <h2><span class="icon">🎯</span> TODAY'S FOCUS AREAS</h2>
-<div class="row"><span class="row-label">Ashchi Interview</span><span class="row-value" style="color:var(--danger)">TODAY @ 12:00 PM</span></div>
-<div class="row"><span class="row-label">Thu Interviews</span><span class="row-value" style="color:var(--warning)">Cook (Phone) + Pareto (Video)</span></div>
-<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">Dumbbell Workout A</span></div>
-<div class="row"><span class="row-label">Nutrition</span><span class="row-value" style="color:var(--success)">Eat well today</span></div>
-<div class="row"><span class="row-label">CCNA</span><span class="row-value" style="color:var(--accent)">Week 2 Tomorrow</span></div>
+<div class="row"><span class="row-label">Interviews</span><span class="row-value" style="color:var(--danger)">Cook 9:30 + Pareto 10:15</span></div>
+<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">T25 Cardio @ 10:30</span></div>
+<div class="row"><span class="row-label">CCNA</span><span class="row-value" style="color:var(--accent)">Week 2 — 4:00 PM</span></div>
+<div class="row"><span class="row-label">Job Apps</span><span class="row-value" style="color:var(--warning)">Fri Nov 13 — 4:30 PM</span></div>
+<div class="row"><span class="row-label">Nutrition</span><span class="row-value" style="color:var(--success)">Eat before Cook interview</span></div>
 </div>
 </div>
 
 <!-- DAILY CHECKLIST -->
 <div class="grid">
 <div class="card">
-<h2><span class="icon">✅</span> TODAY — ASHCHI INTERVIEW DAY (Nov 11)</h2>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 9:00 AM — Wake up, 16 oz water, 5 min stretch</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🏋️ 10:00 AM — Dumbbell Workout A (30 min, finish by 10:30)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍳 10:30 AM — Breakfast — plate method (eat properly, not on the go)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🚗 11:15 AM — Leave for Ashchi (arrive by 11:45 AM)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>💼 12:00 PM — ASHCHI INTERVIEW — be confident</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 12:45 PM — Lunch after interview (plate method)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🚶 1:30 PM — Walking Pad (15 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 5:30 PM — Dinner by 6 PM</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 10:00 PM — Screens off, rest for tomorrow</span></div>
-<div class="note">💡 ADHD tip: Each completed item is a dopamine hit. Don't skip the small wins. If you fall off, restart at the next block — don't abandon the whole day.</div>
+<h2><span class="icon">✅</span> TODAY — DOUBLE INTERVIEW DAY (Nov 12)</h2>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 9:00 AM — Wake up, 16 oz water, quick stretch</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍳 9:15 AM — Quick breakfast before Cook interview</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📞 9:30 AM — COOK TECHNOLOGY PHONE INTERVIEW</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📹 10:15 AM — PARETO CLINIC VIDEO INTERVIEW</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>💪 10:30 AM — T25 Cardio workout</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 11:00 AM — Breakfast/brunch (plate method)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 1:30 PM — Lunch</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 2:00 PM — Rest (save energy for CCNA later)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🎓 4:00 PM — CCNA Study Block 2 (4 videos)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 4:30 PM — Early dinner (plate method)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🧘 6:00 PM — Wind down, no studying</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 10:00 PM — Sleep early for recovery</span></div>
+<div class="note">💡 ADHD tip: This is a heavy day — two interviews in a row. Eat something before Cook, even if it's small. Hydrate. After Pareto, let yourself rest. CCNA is later, no rush.</div>
 </div>
 </div>
 
 <div class="card">
-<h2><span class="icon">🍽️</span> YOUR FOOD — WHAT YOU HAVE + HOW TO USE IT</h2>
-<div style="font-size:.85em;color:var(--muted);margin-bottom:10px">Right now you have: chicken, rice, vegetables, water. That's enough. Here's how to structure it:</div>
-<div class="row"><span class="row-label">Protein</span><span class="row-value">Chicken — grilled, baked, or pan-seared</span></div>
-<div class="row"><span class="row-label">Grain</span><span class="row-value">Rice — brown rice preferred</span></div>
-<div class="row"><span class="row-label">Veg</span><span class="row-value">Whatever vegetables you have</span></div>
+<h2><span class="icon">🍽️</span> YOUR FOOD — ZERO BUDGET, PLATE METHOD</h2>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:10px">Pantry: chicken, rice, vegetables, water. That's enough. Here's the proven approach:</div>
+<div class="row"><span class="row-label">Protein</span><span class="row-value">Chicken — grilled, baked, or pan-seared (4–6 oz per meal)</span></div>
+<div class="row"><span class="row-label">Grain</span><span class="row-value">Rice — brown preferred, white works too</span></div>
+<div class="row"><span class="row-label">Veg</span><span class="row-value">Whatever vegetables you have — fill half the plate</span></div>
 <div class="row"><span class="row-label">Drink</span><span class="row-value">Water only — NO sugary drinks</span></div>
 <div class="note" style="margin-top:8px">
-<strong>Plate method with what you have:</strong><br>
+<strong>Plate method:</strong><br>
 1/2 plate vegetables · 1/4 plate chicken · 1/4 plate rice<br>
 <br>
 <strong>No sugar rule:</strong> Water only. No soda, juice, or sweet tea.<br>
-<strong>Protein target:</strong> Make the chicken portion about palm-sized (4–6 oz) per meal.<br>
-<strong>Last meal:</strong> Finish dinner by 6 PM — no eating after.<br>
-<strong>Water:</strong> Drink 16 oz when you wake up. Sip water throughout the day.
+<strong>Protein target:</strong> 30–40g per meal (about palm-sized chicken portion).<br>
+<strong>Last meal:</strong> Finish by 6 PM — no eating after.<br>
+<strong>Water:</strong> 16 oz when you wake up, then sip throughout the day.<br>
+<strong>Before interviews:</strong> Eat something small (rice + chicken) at least 1 hour before. Don't interview on an empty stomach.
+</div>
+</div>
+
+<div class="card">
+<h2><span class="icon">💡</span> YOUR COACH SAYS</h2>
+<div class="coach-note">
+<div class="title">🏋️ Fitness Research Update</div>
+For your body type (6'4", 320 lbs, sedentary), research confirms:
+<strong>Low-impact is your best friend.</strong> T25 + walking pad is solid. Adding Caroline Girvan dumbbell work is smart — strength training builds muscle which boosts metabolism even at rest. <strong>Key finding:</strong> consistency beats intensity. A 20-minute workout you actually finish beats a 45-minute one you skip.
+</div>
+<div class="coach-note">
+<div class="title">🥗 Nutrition Research Update</div>
+The plate method with your current pantry is scientifically sound. At 320 lbs, you don't need fancy meal prep — you need <strong>structure</strong>: protein anchor + veg half-plate + controlled grain. <strong>Critical:</strong> eat before interviews so you're sharp. An empty stomach = shaky hands and brain fog.
+</div>
+<div class="coach-note">
+<div class="title">🧠 Mental Performance</div>
+ADHD brains need dopamine loops. Every checklist item checked off is a hit. <strong>Break big tasks into tiny wins.</strong> "Study CCNA" is overwhelming. "Watch ONE video" is doable. You've proven you can do it — now just show up.
 </div>
 </div>
 <!-- CCNA PROGRESS TRACKER -->
 <div class="grid">
 <div class="card full-width">
-<h2><span class="icon">🎓</span> CCNA PROGRESS — SUMMER OF CCNA (NetworkChuck) — FULL RESTART</h2>
-<div style="font-size:.8em;color:var(--muted);margin-bottom:8px">Status: STARTING OVER — Week 1. Exam by Feb 7-10.</div>
-<div class="ccna-path">
-<div class="ccna-node current">01 Network Models</div>
-<div class="ccna-node upcoming">02 Ethernet</div>
-<div class="ccna-node upcoming">03 IP & Subnetting</div>
-<div class="ccna-node upcoming">04 Router Config</div>
-<div class="ccna-node upcoming">05 DHCP & DNS</div>
-<div class="ccna-node upcoming">06 SSH & NTP</div>
-<div class="ccna-node upcoming">07 SNMP</div>
-<div class="ccna-node upcoming">08 ACLs</div>
-<div class="ccna-node upcoming">09 VLANs</div>
-<div class="ccna-node upcoming">10 STP</div>
-<div class="ccna-node upcoming">11 Routing</div>
-<div class="ccna-node upcoming">12 IPv6</div>
-<div class="ccna-node upcoming">13 OSPF</div>
-<div class="ccna-node upcoming">14 FHRP</div>
-<div class="ccna-node upcoming">15 QoS</div>
-<div class="ccna-node upcoming">16 Wireless</div>
-<div class="ccna-node upcoming">17 Automation</div>
-<div class="ccna-node upcoming">18 Final</div>
-</div>
-<div style="margin-top:12px">
-<div style="display:flex;justify-content:space-between;font-size:.8em;color:var(--muted)"><span>Week 1 — Network Models</span><span>Target: Complete by Jan 25, Exam Feb 7-10</span></div>
-<div class="progress-bar"><div class="progress-fill" style="width:5%;background:linear-gradient(90deg,var(--accent),var(--accent2))"></div></div>
-<
-<div style="margin-top:16px">
-<div style="font-size:.85em;color:var(--accent2);font-weight:600;margin-bottom:8px">📅 THIS WEEK'S CCNA SCHEDULE:</div>
+<h2><span class="icon">🎓</span> CCNA 200-301 — 12-WEEK ROADMAP TO JANUARY</h2>
+<div style="font-size:.8em;color:var(--muted);margin-bottom:8px">Target: Pass exam by Jan 31, 2027 | Started: Nov 10 | Current: Week 2</div>
 
-<div class="upcoming-card">
-<div class="day">Mon (Nov 10) — YESTERDAY ✅</div>
-<div class="desc">Week 1 complete. R1 interview done (not selected). Rested and prepped for Ashchi today.</div>
+<!-- Domain progress bars -->
+<div style="margin-bottom:12px">
+<div style="font-size:.8em;color:var(--muted);margin-bottom:4px">DOMAIN 1 — Network Basics (20% of exam) — IP Addressing, Subnetting, OSI/TCP/IP</div>
+<div class="progress-bar"><div class="progress-fill" style="width:15%;background:linear-gradient(90deg,var(--accent),var(--accent2))"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.7em;color:var(--muted)"><span>Network Models ✅ | Ethernet 🔄 | IP/Subnetting 📅</span><span>Week 2-4</span></div>
+
+<div style="font-size:.8em;color:var(--muted);margin:8px 0 4px">DOMAIN 2 — Network Access (20%) — VLANs, STP, Wireless</div>
+<div class="progress-bar"><div class="progress-fill" style="width:0%;background:var(--border)"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.7em;color:var(--muted)"><span>Switching 📅 | VLANs 📅 | STP 📅 | Wireless 📅</span><span>Week 5-6</span></div>
+
+<div style="font-size:.8em;color:var(--muted);margin:8px 0 4px">DOMAIN 3 — IP Connectivity (25%) — Routing, OSPF, IP Services</div>
+<div class="progress-bar"><div class="progress-fill" style="width:0%;background:var(--border)"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.7em;color:var(--muted)"><span>Routing 📅 | OSPF 📅 | DHCP/DNS 📅</span><span>Week 7-9</span></div>
+
+<div style="font-size:.8em;color:var(--muted);margin:8px 0 4px">DOMAIN 4 — IP Services (10%) — VPN, NTP, QoS</div>
+<div class="progress-bar"><div class="progress-fill" style="width:0%;background:var(--border)"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.7em;color:var(--muted)"><span>VPN 📅 | NTP 📅 | QoS 📅</span><span>Week 10</span></div>
+
+<div style="font-size:.8em;color:var(--muted);margin:8px 0 4px">DOMAIN 5 — Security (15%) — Auth, hardening, device security</div>
+<div class="progress-bar"><div class="progress-fill" style="width:0%;background:var(--border)"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.7em;color:var(--muted)"><span>Security concepts 📅 | Device hardening 📅</span><span>Week 10-11</span></div>
+
+<div style="font-size:.8em;color:var(--muted);margin:8px 0 4px">DOMAIN 6 — Automation & Programmability (20%) — APIs, JSON, Python basics</div>
+<div class="progress-bar"><div class="progress-fill" style="width:0%;background:var(--border)"></div></div>
+<div style="display:flex;justify-content:space-between;font-size:.7em;color:var(--muted)"><span>APIs 📅 | JSON/XML 📅 | Config Mgmt 📅</span><span>Week 11-12</span></div>
 </div>
-<div class="upcoming-card">
-<div class="day">Tue (Nov 11) — TODAY 🔴 ASHCHI INTERVIEW @ 12:00 PM</div>
-<div class="desc">🏋️ Dumbbell Workout A → Breakfast<br>💼 ASHCHI INTERVIEW @ 12:00 PM (In-Person, Jax)<br>Lunch → Walking Pad → Dinner</div>
-</div>
-<div class="upcoming-card">
-<div class="day">Wed (Nov 12) — 📞 COOK + 📹 PARETO</div>
-<div class="desc">📞 9:30 AM Cook Technologies (Phone) → 📹 10:15 AM Pareto Clinic (VIDEO)<br>T25 Cardio @ 10:30 | Lunch | Rest<br><strong>4:00 PM CCNA Study Block 2</strong><br>Defining Networks with Subnet Masks → Creating a Network Diagram → Ethernet Standards → Copper Cabling</div>
-</div>
-<div class="upcoming-card">
-<div class="day">Thu (Nov 13)</div>
-<div class="desc">Understanding Fiber Optic Cable Spectrum.mp4 → Using Straight-through, Crossover, and MDI-X.mp4 → Understanding MAC Addresses and Frames.mp4 → How Switches Do What They Do.mp4</div>
-</div>
-<div class="upcoming-card">
-<div class="day">Fri (Nov 14)</div>
-<div class="desc">Switch Port Numbering and CAM Table.mp4 → Exploring MAC Address Tables.mp4 → Using CAM Table to Track Down Devices.mp4 → Using Cisco Discovery Protocol.mp4 → Using Link Layer Discovery Protocol.mp4</div>
-</div>
-<div class="upcoming-card">
-<div class="day">Sat (Nov 15)</div>
-<div class="desc">REVIEW hardest videos from week + start Packet Tracer lab (Castle Rysen videos)</div>
-</div>
-</div>
+
+<!-- Weekly breakdown -->
+<div style="font-size:.85em;color:var(--accent2);font-weight:600;margin-bottom:8px">📅 12-WEEK BREAKDOWN:</div>
+
+<div class="milestone"><span class="week">Week 1 (Nov 10–16)</span> ✅ DONE — Network Models. Completed all 100+ NetworkChuck videos.</div>
+<div class="milestone" style="border-left-color:var(--accent)"><span class="week">Week 2 (Nov 17–23)</span> 🔵 IN PROGRESS — Ethernet, IP addressing, subnetting, network diagrams, copper cabling</div>
+<div class="milestone"><span class="week">Week 3 (Nov 24–30)</span> IP & Subnetting deep dive — practice daily until automatic. Lab with Packet Tracer.</div>
+<div class="milestone"><span class="week">Week 4 (Dec 1–7)</span> MAC addresses, switch fundamentals, CAM tables, CDP/LLDP</div>
+<div class="milestone"><span class="week">Week 5 (Dec 8–14)</span> VLANs, trunking, router-on-a-stick</div>
+<div class="milestone"><span class="week">Week 6 (Dec 15–21)</span> STP, wireless security, switching review</div>
+<div class="milestone"><span class="week">Week 7 (Dec 22–28)</span> Routing fundamentals, static routes, routing protocols</div>
+<div class="milestone"><span class="week">Week 8 (Dec 29–Jan 4)</span> OSPF — single area, configuration, troubleshooting</div>
+<div class="milestone"><span class="week">Week 9 (Jan 5–11)</span> IP Services: DHCP, DNS, NTP, NAT</div>
+<div class="milestone"><span class="week">Week 10 (Jan 12–18)</span> Security fundamentals + VPN, QoS</div>
+<div class="milestone"><span class="week">Week 11 (Jan 19–25)</span> Automation & Programmability: APIs, JSON, Python basics</div>
+<div class="milestone"><span class="week">Week 12 (Jan 26–31)</span> 📝 FULL REVIEW: Practice exams, weak areas, timed simulations</div>
 
 <div class="note" style="margin-top:12px">
-📁 All 100+ videos are in: <code style="background:var(--border);padding:2px 6px;border-radius:4px;font-size:.75em">C:\Users\KM\Videos\CCNA Vids</code><br>
-✏️ Write 3 things you learned after each video. Watch at 1.25x speed.<br>
-🔑 If a video doesn't fit perfectly, watch it anyway — it'll help fill gaps.
+📁 All videos: <code style="background:var(--border);padding:2px 6px;border-radius:4px;font-size:.75em">C:\Users\KM\Videos\CCNA Vids</code><br>
+✏️ <strong>After each video:</strong> Write 3 things you learned.<br>
+⚡ <strong>Watch at 1.25x speed.</strong><br>
+🔑 <strong>Key rule:</strong> Subnetting practice EVERY day until automatic. This is the #1 skill tested.<br>
+🖥️ <strong>Lab goal:</strong> 8–10 hours per week minimum. Use Packet Tracer for hands-on practice.<br>
+📊 <strong>Candidates who lab 8+ hrs/week pass at 78%. Those who skip labs pass at 39%.</strong>
 </div>
 </div>
 </div>
@@ -288,23 +300,18 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 
 <div class="note" style="margin-top:10px">
 ✅ <strong>Morning Stretches — EVERY DAY</strong><br>
-📺 <strong>Nina Strojnik:</strong> 10 Min Beginner Morning Stretches (YouTube) — tap the button above<br>
-✅ <strong>T25 All Phases on Google Drive</strong><br>
-📱 <strong>Access from any device:</strong> All 16 videos on your Google Drive (links below)<br>
+📺 <strong>Nina Strojnik:</strong> 10 Min Beginner Morning Stretches (YouTube)<br>
+💾 <strong>T25 All Phases on Google Drive</strong><br>
 📅 <strong>This week's HYBRID SCHEDULE:</strong><br>
 &nbsp;&nbsp;Mon: Caroline Girvan Dumbbell Full Body (YouTube)<br>
-&nbsp;&nbsp;Tue: T25 Cardio + Walking Pad<br>
+&nbsp;&nbsp;Tue: T25 Cardio<br>
 &nbsp;&nbsp;Wed: Caroline Girvan Dumbbell Full Body (YouTube)<br>
-&nbsp;&nbsp;Thu: T25 Lower Focus + Walking Pad<br>
+&nbsp;&nbsp;Thu: T25 Lower Focus<br>
 &nbsp;&nbsp;Fri: Caroline Girvan Dumbbell HIIT (YouTube)<br>
-&nbsp;&nbsp;Sat: T25 Ab Intervals + Yoga Stretch<br>
-&nbsp;&nbsp;Sun: Yoga Flexibility/Recovery (YouTube)<br>
+&nbsp;&nbsp;Sat: T25 Ab Intervals<br>
+&nbsp;&nbsp;Sun: Yoga Recovery (YouTube)<br>
 <br>
-<strong>Phase 1 (Alpha):</strong> Cardio, Ab Intervals, Lower Focus, Speed 1.0, Total Body Circuit<br>
-<strong>Phase 2 (Beta):</strong> Core Cardio, Dynamic Core, Rip't Circuit, Speed 2.0, Upper Focus<br>
-<strong>Phase 3 (Gamma):</strong> Extreme Circuit, Rip't Up, Speed 3.0, The Pyramid<br>
-<strong>YouTube (Caroline Girvan):</strong> Dumbbell Full Body, Dumbbell HIIT, Yoga Flexibility<br>
-<strong>YouTube (Nina Strojnik):</strong> Morning Stretches — do this EVERY morning before workout
+<strong>💡 Coach's note:</strong> Low-impact is your best friend. Walking pad between T25 phases. Consistency > intensity. A 20-min workout you finish beats a 45-min one you skip.
 </div>
 </div>
 
@@ -391,30 +398,25 @@ const workoutVideos = [
 ];
 
 const allVids = [
-  // Alpha Phase 1 (Google Drive)
-  { name: 'Ab Intervals', driveId: '19OJZWowywJN1tRoDr8rlRYFo7E3ihVXt', phase: 'Alpha', source: 'T25' },
-  { name: 'Cardio', driveId: '1NLj4FaoOZ5LQWHebJ9mLgT8mPdvU0nr7', phase: 'Alpha', source: 'T25' },
-  { name: 'Lower Focus', driveId: '1FDfzH5iCs3L1Qx4SuL-YqZeeDijmE3Wu', phase: 'Alpha', source: 'T25' },
-  { name: 'Speed 1.0', driveId: '11YqFu_Td3haY8IXtNHK1mRi6Wq-QeS3e', phase: 'Alpha', source: 'T25' },
-  { name: 'Total Body Circuit', driveId: '1ikD3RvsD3bpjpWKCKamqfPF8a4Mw7E_I', phase: 'Alpha', source: 'T25' },
-  // Beta Phase 2 (Google Drive)
-  { name: 'Core Cardio', driveId: '1i0OaCQPhlJ2hRi0UG7Fbgkv6iu0gtT6N', phase: 'Beta', source: 'T25' },
-  { name: 'Dynamic Core', driveId: '1EqvEB8yu6SojcitfV0mQJLa8W4FVt03W', phase: 'Beta', source: 'T25' },
-  { name: "Rip't Circuit", driveId: '1cRPWd8DLyU8vU-QW37fDfsAeSwl7pnQS', phase: 'Beta', source: 'T25' },
-  { name: 'Speed 2.0', driveId: '18y2mA1o8UgN5RjwwtA-IDcMsxqZxgGZp', phase: 'Beta', source: 'T25' },
-  { name: 'Upper Focus', driveId: '1KjmejcB8nvTqc8fg05msZtQfPiQeB_cJ', phase: 'Beta', source: 'T25' },
-  // Gamma Phase 3 (Google Drive)
-  { name: 'Extreme Circuit', driveId: '1T367-g2ycnKBC0GLZSlx2rl8wzREIhix', phase: 'Gamma', source: 'T25' },
-  { name: "Rip't Up", driveId: '1ompLjs7wT9SLz90zqERSFlzpxeajZl3a', phase: 'Gamma', source: 'T25' },
-  { name: 'Speed 3.0', driveId: '1DqOlMIi_EUlQ5KSrUq8POukO_nFF-YVY', phase: 'Gamma', source: 'T25' },
-  { name: 'The Pyramid', driveId: '1RhLwcaZBy863-PdMWrLJ0frIqwFMxfqm', phase: 'Gamma', source: 'T25' },
-  // Other (Google Drive)
-  { name: 'Core Speed (Bonus)', driveId: '19r8tSAUzJhrbukVQUmVnRcYzYWt-8PIY', phase: 'Other', source: 'T25' },
+  { name: 'Ab Intervals', driveId: '19OJZWowywJN1tRoDr8rlRYFo7E3ihVXt', phase: 'Alpha', source: 'T25', type: 'drive' },
+  { name: 'Cardio', driveId: '1NLj4FaoOZ5LQWHebJ9mLgT8mPdvU0nr7', phase: 'Alpha', source: 'T25', type: 'drive' },
+  { name: 'Lower Focus', driveId: '1FDfzH5iCs3L1Qx4SuL-YqZeeDijmE3Wu', phase: 'Alpha', source: 'T25', type: 'drive' },
+  { name: 'Speed 1.0', driveId: '11YqFu_Td3haY8IXtNHK1mRi6Wq-QeS3e', phase: 'Alpha', source: 'T25', type: 'drive' },
+  { name: 'Total Body Circuit', driveId: '1ikD3RvsD3bpjpWKCKamqfPF8a4Mw7E_I', phase: 'Alpha', source: 'T25', type: 'drive' },
+  { name: 'Core Cardio', driveId: '1i0OaCQPhlJ2hRi0UG7Fbgkv6iu0gtT6N', phase: 'Beta', source: 'T25', type: 'drive' },
+  { name: 'Dynamic Core', driveId: '1EqvEB8yu6SojcitfV0mQJLa8W4FVt03W', phase: 'Beta', source: 'T25', type: 'drive' },
+  { name: "Rip't Circuit", driveId: '1cRPWd8DLyU8vU-QW37fDfsAeSwl7pnQS', phase: 'Beta', source: 'T25', type: 'drive' },
+  { name: 'Speed 2.0', driveId: '18y2mA1o8UgN5RjwwtA-IDcMsxqZxgGZp', phase: 'Beta', source: 'T25', type: 'drive' },
+  { name: 'Upper Focus', driveId: '1KjmejcB8nvTqc8fg05msZtQfPiQeB_cJ', phase: 'Beta', source: 'T25', type: 'drive' },
+  { name: 'Extreme Circuit', driveId: '1T367-g2ycnKBC0GLZSlx2rl8wzREIhix', phase: 'Gamma', source: 'T25', type: 'drive' },
+  { name: "Rip't Up", driveId: '1ompLjs7wT9SLz90zqERSFlzpxeajZl3a', phase: 'Gamma', source: 'T25', type: 'drive' },
+  { name: 'Speed 3.0', driveId: '1DqOlMIi_EUlQ5KSrUq8POukO_nFF-YVY', phase: 'Gamma', source: 'T25', type: 'drive' },
+  { name: 'The Pyramid', driveId: '1RhLwcaZBy863-PdMWrLJ0frIqwFMxfqm', phase: 'Gamma', source: 'T25', type: 'drive' },
+  { name: 'Core Speed (Bonus)', driveId: '19r8tSAUzJhrbukVQUmVnRcYzYWt-8PIY', phase: 'Other', source: 'T25', type: 'drive' },
   { name: 'Stretch', driveId: '1aRPfJyPiHAvSgJUuhGI5X39Cgkce73ca', phase: 'Other', source: 'T25', type: 'drive' },
-  // YouTube (Caroline Girvan + Yoga)
-  { name: 'Dumbbell Full Body 30min', driveId: 'GViX8riaHX4', phase: 'YouTube', source: 'Caroline Girvan' },
-  { name: 'Dumbbell HIIT 20min', driveId: 'rRugP_hkkE0', phase: 'YouTube', source: 'Caroline Girvan' },
-  { name: 'Yoga Flexibility 20min', driveId: '0j0WXjq9bS4', phase: 'YouTube', source: 'SarahBethYoga' }
+  { name: 'Dumbbell Full Body 30min', driveId: 'GViX8riaHX4', phase: 'YouTube', source: 'Caroline Girvan', type: 'youtube' },
+  { name: 'Dumbbell HIIT 20min', driveId: 'rRugP_hkkE0', phase: 'YouTube', source: 'Caroline Girvan', type: 'youtube' },
+  { name: 'Yoga Flexibility 20min', driveId: '0j0WXjq9bS4', phase: 'YouTube', source: 'SarahBethYoga', type: 'youtube' }
 ];
 
 function getVideoLink(video) {
