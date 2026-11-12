@@ -28,8 +28,8 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .today-highlight{border:2px solid var(--accent2);position:relative}
 .today-highlight::before{content:'TODAY';position:absolute;top:-8px;right:12px;background:var(--accent2);color:#000;padding:2px 8px;border-radius:4px;font-size:.65em;font-weight:700;letter-spacing:1px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;margin-bottom:16px}
-.grid-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;width:100%}
-.grid-3col .card{width:100%;min-width:0;overflow-wrap:break-word}
+.grid-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;width:calc(100vw - 40px);max-width:none}
+.grid-3col .card{width:100%;min-width:0;overflow-wrap:break-word;display:flex;flex-direction:column}
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:border-color .2s}
 .card:hover{border-color:var(--accent)}
 .card h2{font-size:1em;color:var(--accent2);margin-bottom:12px;display:flex;align-items:center;gap:8px}
@@ -97,28 +97,40 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 
 <!-- TOP ROW: Interviews + Stats -->
 <div class="grid">
-<div class="interview-card">
-<h3>🔴 PHONE SCREEN: R1 RCM — TODAY @ 2:40 PM</h3>
-<div class="meta">Role: Customer Service Rep — Patient Registration | Location: Ascension St. Vincent's ER Arlington | $16–21/hr</div>
-<div style="font-size:.8em;color:var(--muted);margin-bottom:8px">📞 They call from 312 area code. Have your phone charged and nearby. No camera needed.</div>
-<div style="font-size:.85em;margin-bottom:6px"><strong>Phone Screen Prep — DO NOW:</strong></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review your 3 STAR stories (scroll down)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Research R1 RCM — revenue cycle, healthcare customer service</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Prepare: "Tell me about yourself" — 2 min pitch</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Prepare questions to ask them</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Find a quiet place with good signal</span></div>
-<div class="note">⚠️ They require: open availability (day/evening/overnight), 8–12 hr shifts, holiday/weekend availability. Be ready to confirm you can meet this.</div>
+
+<!-- Ashchi — TODAY -->
+<div class="interview-card" style="border-color:var(--danger);background:linear-gradient(135deg,rgba(225,112,85,.15),rgba(253,203,110,.08))">
+<h3>🚨 ASHCHI HEART & VASCULAR — INTERVIEW: TODAY @ 12:00 PM</h3>
+<div class="meta">IT Support Specialist (On-Site Help Desk) — 3900 University Blvd S, Jacksonville, FL 32216 | $40K–$50K</div>
+<div style="font-size:.85em;margin-bottom:6px"><strong>🔴 IT'S TODAY — Arrive by 11:45 AM (leave 11:15)</strong></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🚗 Leave 11:15 AM from Orange Park to Jax</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>👔 Business casual — lay out clothes now</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📄 Print 3 copies of resume</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🚗 Confirm ride with brother</span></div>
+<div class="note">🚗 Ride confirmed | Dress: Business casual | 45-50 min drive</div>
 </div>
 
-<div class="interview-card">
-<h3>🟡 IN-PERSON INTERVIEW: Aschi Heart & Vascular Center</h3>
-<div class="meta">Friday, Nov 14 at 12:30 PM — Ascension St. Vincent's</div>
-<div style="font-size:.85em;margin-bottom:6px"><strong>Next Steps:</strong></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Confirm ride with brother by tomorrow evening</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Plan route — leave 30 min early</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Print copies of resume</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Research clinic — services, location</span></div>
-<div class="note">🚗 Car issue noted — lock in ride by Tuesday evening</div>
+<!-- Cook Tech — TOMORROW -->
+<div class="interview-card" style="border-color:var(--warning);background:linear-gradient(135deg,rgba(253,203,110,.1),rgba(108,92,231,.05))">
+<h3>📞 COOK TECHNOLOGY — PHONE INTERVIEW</h3>
+<div class="meta">📅 Nov 12 (Thursday) — 9:30 AM to 10:00 AM EST | IT Smart Hands Field Technician | $17–$25/hr + mileage</div>
+<div style="font-size:.85em;margin-bottom:6px"><strong>📋 Prep Notes:</strong></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review: structured cabling, network troubleshooting, data cabling</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Prepare: personal tool kit (punch tool, toner, crimper, laptop)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review: hardware installs, field service experience</span></div>
+<div class="note">⚠️ 1099 contractor — requires personal tool kit, reliable vehicle | Immediately followed by Pareto</div>
+</div>
+
+<!-- Pareto — TOMORROW -->
+<div class="interview-card" style="border-color:var(--accent2);background:linear-gradient(135deg,rgba(0,206,201,.1),rgba(0,184,148,.05))">
+<h3>📹 PARETO CLINIC — VIDEO INTERVIEW</h3>
+<div class="meta">📅 Nov 12 (Thursday) — 10:15 AM to 10:45 AM EST | Medical Call Center Representative | $16–$18/hr | In-Person (Jax, FL)</div>
+<div style="font-size:.85em;margin-bottom:6px"><strong>📋 Prep Notes:</strong></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review: HIPAA compliance, medical office procedures</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Prepare: scheduling, confirming, canceling appointments</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Practice: professional phone demeanor, high-volume call scenarios</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>Review: AthenaOne/Weave (EHR systems) if familiar, insurance verification</span></div>
+<div class="note">📹 VIDEO INTERVIEW — test camera, lighting, quiet background before call | Keep phone charged after Cook</div>
 </div>
 </div>
 
@@ -127,38 +139,35 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="card">
 <h2><span class="icon">📊</span> WEEK OVERVIEW</h2>
 <div class="stats-grid">
-<div class="stat"><div class="number">0</div><div class="label">Days to R1</div></div>
-<div class="stat"><div class="number">4</div><div class="label">Days to Aschi</div></div>
-<div class="stat"><div class="number">2%</div><div class="label">CCNA Progress</div></div>
+<div class="stat"><div class="number" style="color:var(--success)">✅</div><div class="label">R1 Done</div></div>
+<div class="stat"><div class="number" style="color:var(--danger)">🚨</div><div class="label">Ashchi TODAY</div></div>
+<div class="stat"><div class="number">2</div><div class="label">Thu Interviews</div></div>
 </div>
 </div>
 
 <div class="card">
 <h2><span class="icon">🎯</span> TODAY'S FOCUS AREAS</h2>
-<div class="row"><span class="row-label">Interview Prep</span><span class="row-value" style="color:var(--danger)">HIGH PRIORITY</span></div>
-<div class="row"><span class="row-label">CCNA Study</span><span class="row-value" style="color:var(--warning)">Restart Week 1</span></div>
-<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">30 min daily</span></div>
-<div class="row"><span class="row-label">Nutrition</span><span class="row-value" style="color:var(--success)">No sugar rule</span></div>
-<div class="row"><span class="row-label">Job Applications</span><span class="row-value" style="color:var(--accent)">5/week target</span></div>
+<div class="row"><span class="row-label">Ashchi Interview</span><span class="row-value" style="color:var(--danger)">TODAY @ 12:00 PM</span></div>
+<div class="row"><span class="row-label">Thu Interviews</span><span class="row-value" style="color:var(--warning)">Cook (Phone) + Pareto (Video)</span></div>
+<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">Dumbbell Workout A</span></div>
+<div class="row"><span class="row-label">Nutrition</span><span class="row-value" style="color:var(--success)">Eat well today</span></div>
+<div class="row"><span class="row-label">CCNA</span><span class="row-value" style="color:var(--accent)">Week 2 Tomorrow</span></div>
 </div>
 </div>
 
 <!-- DAILY CHECKLIST -->
 <div class="grid">
 <div class="card">
-<h2><span class="icon">✅</span> DAILY CHECKLIST — CHECK OFF AS YOU GO</h2>
+<h2><span class="icon">✅</span> TODAY — ASHCHI INTERVIEW DAY (Nov 11)</h2>
 <div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 9:00 AM — Wake up, 16 oz water, 5 min stretch</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 9:30 AM — CCNA Study Block 1 (4 videos, Pomodoro x2)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 10:30 AM — T25 Alpha Cardio (25 min, NO JUMPING)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 11:00 AM — Breakfast (plate method, 30g+ protein)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 11:30 AM — R1 Interview Prep (90 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 1:00 PM — Lunch (plate method)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 1:30 PM — Walking Pad (10–15 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 2:00 PM — CCNA Review (30 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📞 2:40 PM — 📞 R1 PHONE SCREEN</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ Dinner by 6 PM, nothing after 6 PM</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 Screens off by 9:30 PM</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 Bedtime by 10:30 PM</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🏋️ 10:00 AM — Dumbbell Workout A (30 min, finish by 10:30)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍳 10:30 AM — Breakfast — plate method (eat properly, not on the go)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🚗 11:15 AM — Leave for Ashchi (arrive by 11:45 AM)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>💼 12:00 PM — ASHCHI INTERVIEW — be confident</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 12:45 PM — Lunch after interview (plate method)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🚶 1:30 PM — Walking Pad (15 min)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 5:30 PM — Dinner by 6 PM</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 10:00 PM — Screens off, rest for tomorrow</span></div>
 <div class="note">💡 ADHD tip: Each completed item is a dopamine hit. Don't skip the small wins. If you fall off, restart at the next block — don't abandon the whole day.</div>
 </div>
 </div>
@@ -213,23 +222,27 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div style="font-size:.85em;color:var(--accent2);font-weight:600;margin-bottom:8px">📅 THIS WEEK'S CCNA SCHEDULE:</div>
 
 <div class="upcoming-card">
-<div class="day">Mon (Nov 10) — TODAY ✅</div>
-<div class="desc">Describing Network Communication with Models.mp4 → Determine Speed with Bits and Bytes.mp4 → IP Addresses...Why Do We Need Them.mp4 → Private and Public IP Addresses.mp4</div>
+<div class="day">Mon (Nov 10) — YESTERDAY ✅</div>
+<div class="desc">Week 1 complete. R1 interview done (not selected). Rested and prepped for Ashchi today.</div>
 </div>
 <div class="upcoming-card">
-<div class="day">Tue (Nov 11)</div>
-<div class="desc">Defining Networks with Subnet Masks.mp4 → Creating a Network Diagram.mp4 → The Importance of Network Standards (Ethernet).mp4 → Copper Cabling Standards and Characteristics.mp4</div>
+<div class="day">Tue (Nov 11) — TODAY 🔴 ASHCHI INTERVIEW @ 12:00 PM</div>
+<div class="desc">🏋️ Dumbbell Workout A → Breakfast<br>💼 ASHCHI INTERVIEW @ 12:00 PM (In-Person, Jax)<br>Lunch → Walking Pad → Dinner</div>
 </div>
 <div class="upcoming-card">
-<div class="day">Wed (Nov 12)</div>
-<div class="desc">Understanding Fiber Optic Cable Spectrum.mp4 → Using Straight-through, Crossover, and MDI-X.mp4 → Understanding MAC Addresses and Frames.mp4 → How Switches Do What They Do.mp4</div>
+<div class="day">Wed (Nov 12) — 📞 COOK + 📹 PARETO</div>
+<div class="desc">📞 9:30 AM Cook Technologies (Phone) → 📹 10:15 AM Pareto Clinic (VIDEO)<br>T25 Cardio @ 10:30 | Lunch | Rest<br><strong>4:00 PM CCNA Study Block 2</strong><br>Defining Networks with Subnet Masks → Creating a Network Diagram → Ethernet Standards → Copper Cabling</div>
 </div>
 <div class="upcoming-card">
 <div class="day">Thu (Nov 13)</div>
-<div class="desc">Switch Port Numbering and CAM Table.mp4 → Exploring MAC Address Tables.mp4 → Using CAM Table to Track Down Devices.mp4 → Using Cisco Discovery Protocol.mp4 → Using Link Layer Discovery Protocol.mp4</div>
+<div class="desc">Understanding Fiber Optic Cable Spectrum.mp4 → Using Straight-through, Crossover, and MDI-X.mp4 → Understanding MAC Addresses and Frames.mp4 → How Switches Do What They Do.mp4</div>
 </div>
 <div class="upcoming-card">
 <div class="day">Fri (Nov 14)</div>
+<div class="desc">Switch Port Numbering and CAM Table.mp4 → Exploring MAC Address Tables.mp4 → Using CAM Table to Track Down Devices.mp4 → Using Cisco Discovery Protocol.mp4 → Using Link Layer Discovery Protocol.mp4</div>
+</div>
+<div class="upcoming-card">
+<div class="day">Sat (Nov 15)</div>
 <div class="desc">REVIEW hardest videos from week + start Packet Tracer lab (Castle Rysen videos)</div>
 </div>
 </div>
@@ -257,11 +270,12 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 </div>
 
 <div class="card">
-<h2><span class="icon">💪</span> <span id="workoutTitle">TODAY'S WORKOUT — LOADING...</span></h2>
-<div id="workoutThumbnail"></div>
+<h2><span class="icon">💪</span> <span id="workoutTitle">TODAY'S WORKOUT</span></h2>
+<div id="stretchButton" style="margin-bottom:10px"></div>
+<div id="workoutButtons" style="display:flex;gap:8px;margin:10px 0;flex-wrap:wrap"></div>
 <div class="workout-step">
 <div class="step-num">1</div>
-<div><div class="step-label">Warm-up</div><div class="step-detail">Follow the video's built-in warm-up (first ~2 min)</div></div>
+<div><div class="step-label">Warm-up / Morning Stretch</div><div class="step-detail">Tap the button above to open a 10-min follow-along stretch video</div></div>
 </div>
 <div class="workout-step">
 <div class="step-num">2</div>
@@ -273,16 +287,24 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 </div>
 
 <div class="note" style="margin-top:10px">
-✅ <strong>T25 Alpha Phase 1</strong> - designed for beginners<br>
-⚠️ <strong>NO JUMPING - substitute every jump with a march or step.</strong><br>
-📁 Video location: <code style="background:var(--border);padding:2px 6px;border-radius:4px;font-size:.75em">C:\Users\KM\Videos\Workouts\T25\Videos\</code><br>
-📅 <strong>This week's T25 schedule:</strong><br>
-&nbsp;&nbsp;Mon/Thu: Cardio / Lower Focus<br>
-&nbsp;&nbsp;Tue: Ab Intervals<br>
-&nbsp;&nbsp;Wed: Cardio<br>
-&nbsp;&nbsp;Fri: Speed 1.0<br>
-&nbsp;&nbsp;Sat: Total Body Circuit<br>
-&nbsp;&nbsp;Sun: Rest or Stretch
+✅ <strong>Morning Stretches — EVERY DAY</strong><br>
+📺 <strong>Nina Strojnik:</strong> 10 Min Beginner Morning Stretches (YouTube) — tap the button above<br>
+✅ <strong>T25 All Phases on Google Drive</strong><br>
+📱 <strong>Access from any device:</strong> All 16 videos on your Google Drive (links below)<br>
+📅 <strong>This week's HYBRID SCHEDULE:</strong><br>
+&nbsp;&nbsp;Mon: Caroline Girvan Dumbbell Full Body (YouTube)<br>
+&nbsp;&nbsp;Tue: T25 Cardio + Walking Pad<br>
+&nbsp;&nbsp;Wed: Caroline Girvan Dumbbell Full Body (YouTube)<br>
+&nbsp;&nbsp;Thu: T25 Lower Focus + Walking Pad<br>
+&nbsp;&nbsp;Fri: Caroline Girvan Dumbbell HIIT (YouTube)<br>
+&nbsp;&nbsp;Sat: T25 Ab Intervals + Yoga Stretch<br>
+&nbsp;&nbsp;Sun: Yoga Flexibility/Recovery (YouTube)<br>
+<br>
+<strong>Phase 1 (Alpha):</strong> Cardio, Ab Intervals, Lower Focus, Speed 1.0, Total Body Circuit<br>
+<strong>Phase 2 (Beta):</strong> Core Cardio, Dynamic Core, Rip't Circuit, Speed 2.0, Upper Focus<br>
+<strong>Phase 3 (Gamma):</strong> Extreme Circuit, Rip't Up, Speed 3.0, The Pyramid<br>
+<strong>YouTube (Caroline Girvan):</strong> Dumbbell Full Body, Dumbbell HIIT, Yoga Flexibility<br>
+<strong>YouTube (Nina Strojnik):</strong> Morning Stretches — do this EVERY morning before workout
 </div>
 </div>
 
@@ -348,22 +370,132 @@ loadChecklist()
 // Reset checklist daily at midnight
 const today=new Date().toDateString();const savedDate=localStorage.getItem('checklistDate');if(savedDate&&savedDate!==today){localStorage.removeItem('dailyChecklist');location.reload()}localStorage.setItem('checklistDate',today)
 
-// Today's workout video selector
+// HYBRID WORKOUT SYSTEM — T25 (Google Drive) + YouTube (Caroline Girvan + Yoga)
+// Weekly Schedule:
+// Mon: Dumbbell Full Body (Caroline Girvan) → T25 Cardio (Google Drive)
+// Tue: T25 Cardio + Walking Pad
+// Wed: Dumbbell Upper/Lower Split (Caroline Girvan) → T25 Lower Focus (Google Drive)
+// Thu: T25 Lower Focus + Walking Pad
+// Fri: Dumbbell HIIT/Full Body (Caroline Girvan) → T25 Ab Intervals (Google Drive)
+// Sat: T25 Ab Intervals + Yoga Stretch
+// Sun: Yoga Flexibility/Recovery (YouTube)
+
 const workoutVideos = [
-  { name: 'Cardio', file: 'Alpha - Cardio.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Cardio.m4v' },
-  { name: 'Ab Intervals', file: 'Alpha - Ab Intervals.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Ab%20Intervals.m4v' },
-  { name: 'Cardio', file: 'Alpha - Cardio.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Cardio.m4v' },
-  { name: 'Lower Focus', file: 'Alpha - Lower Focus.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Lower%20Focus.m4v' },
-  { name: 'Speed 1.0', file: 'Alpha - Speed 1.0.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Speed%201.0.m4v' },
-  { name: 'Total Body Circuit', file: 'Alpha - Total Body Circuit.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Alpha%20-%20Total%20Body%20Circuit.m4v' },
-  { name: 'Stretch', file: 'Other - Stretch.m4v', path: 'file:///C:/Users/KM/Videos/Workouts/T25/Videos/Other%20-%20Stretch.m4v' }
+  { name: 'Yoga Recovery', type: 'youtube', driveId: '0j0WXjq9bS4', source: 'SarahBethYoga' },  // Sunday
+  { name: 'Dumbbell Full Body', type: 'youtube', driveId: 'GViX8riaHX4', source: 'Caroline Girvan' },  // Monday
+  { name: 'T25 Cardio', type: 'drive', driveId: '1NLj4FaoOZ5LQWHebJ9mLgT8mPdvU0nr7' },  // Tuesday
+  { name: 'Dumbbell Full Body', type: 'youtube', driveId: 'GViX8riaHX4', source: 'Caroline Girvan' },  // Wednesday
+  { name: 'T25 Lower Focus', type: 'drive', driveId: '1FDfzH5iCs3L1Qx4SuL-YqZeeDijmE3Wu' },  // Thursday
+  { name: 'Dumbbell HIIT', type: 'youtube', driveId: 'rRugP_hkkE0', source: 'Caroline Girvan' },  // Friday
+  { name: 'T25 Ab Intervals', type: 'drive', driveId: '19OJZWowywJN1tRoDr8rlRYFo7E3ihVXt' }  // Saturday
 ];
 
+const allVids = [
+  // Alpha Phase 1 (Google Drive)
+  { name: 'Ab Intervals', driveId: '19OJZWowywJN1tRoDr8rlRYFo7E3ihVXt', phase: 'Alpha', source: 'T25' },
+  { name: 'Cardio', driveId: '1NLj4FaoOZ5LQWHebJ9mLgT8mPdvU0nr7', phase: 'Alpha', source: 'T25' },
+  { name: 'Lower Focus', driveId: '1FDfzH5iCs3L1Qx4SuL-YqZeeDijmE3Wu', phase: 'Alpha', source: 'T25' },
+  { name: 'Speed 1.0', driveId: '11YqFu_Td3haY8IXtNHK1mRi6Wq-QeS3e', phase: 'Alpha', source: 'T25' },
+  { name: 'Total Body Circuit', driveId: '1ikD3RvsD3bpjpWKCKamqfPF8a4Mw7E_I', phase: 'Alpha', source: 'T25' },
+  // Beta Phase 2 (Google Drive)
+  { name: 'Core Cardio', driveId: '1i0OaCQPhlJ2hRi0UG7Fbgkv6iu0gtT6N', phase: 'Beta', source: 'T25' },
+  { name: 'Dynamic Core', driveId: '1EqvEB8yu6SojcitfV0mQJLa8W4FVt03W', phase: 'Beta', source: 'T25' },
+  { name: "Rip't Circuit", driveId: '1cRPWd8DLyU8vU-QW37fDfsAeSwl7pnQS', phase: 'Beta', source: 'T25' },
+  { name: 'Speed 2.0', driveId: '18y2mA1o8UgN5RjwwtA-IDcMsxqZxgGZp', phase: 'Beta', source: 'T25' },
+  { name: 'Upper Focus', driveId: '1KjmejcB8nvTqc8fg05msZtQfPiQeB_cJ', phase: 'Beta', source: 'T25' },
+  // Gamma Phase 3 (Google Drive)
+  { name: 'Extreme Circuit', driveId: '1T367-g2ycnKBC0GLZSlx2rl8wzREIhix', phase: 'Gamma', source: 'T25' },
+  { name: "Rip't Up", driveId: '1ompLjs7wT9SLz90zqERSFlzpxeajZl3a', phase: 'Gamma', source: 'T25' },
+  { name: 'Speed 3.0', driveId: '1DqOlMIi_EUlQ5KSrUq8POukO_nFF-YVY', phase: 'Gamma', source: 'T25' },
+  { name: 'The Pyramid', driveId: '1RhLwcaZBy863-PdMWrLJ0frIqwFMxfqm', phase: 'Gamma', source: 'T25' },
+  // Other (Google Drive)
+  { name: 'Core Speed (Bonus)', driveId: '19r8tSAUzJhrbukVQUmVnRcYzYWt-8PIY', phase: 'Other', source: 'T25' },
+  { name: 'Stretch', driveId: '1aRPfJyPiHAvSgJUuhGI5X39Cgkce73ca', phase: 'Other', source: 'T25', type: 'drive' },
+  // YouTube (Caroline Girvan + Yoga)
+  { name: 'Dumbbell Full Body 30min', driveId: 'GViX8riaHX4', phase: 'YouTube', source: 'Caroline Girvan' },
+  { name: 'Dumbbell HIIT 20min', driveId: 'rRugP_hkkE0', phase: 'YouTube', source: 'Caroline Girvan' },
+  { name: 'Yoga Flexibility 20min', driveId: '0j0WXjq9bS4', phase: 'YouTube', source: 'SarahBethYoga' }
+];
+
+function getVideoLink(video) {
+  if (video.type === 'youtube') {
+    return 'https://www.youtube.com/watch?v=' + video.driveId;
+  } else if (video.type === 'drive') {
+    return 'https://drive.google.com/file/d/' + video.driveId + '/view?usp=drivesdk';
+  }
+  return '#';
+}
+
+function getVideoIcon(type) {
+  if (type === 'youtube') return '📺';
+  if (type === 'drive') return '💾';
+  return '▶️';
+}
+
+function getVideoSource(video) {
+  if (video.type === 'youtube') return video.source;
+  if (video.type === 'drive') return 'T25 Google Drive';
+  return '';
+}
+
 function showTodayWorkout() {
-  const day = new Date().getDay();
+  const day = new Date().getDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
+  document.getElementById('workoutTitle').textContent = 'TODAY\'S WORKOUT';
+
+  // Get today's workout
   const w = workoutVideos[day];
-  document.getElementById('workoutTitle').textContent = "TODAY'S WORKOUT - " + w.name.toUpperCase();
-  document.getElementById('workoutThumbnail').innerHTML = '<a href="' + w.path + '" class="workout-thumbnail" target="_blank"><div class="play-icon">▶</div><div class="video-name">' + w.name + '</div><div class="video-day">Click to open — ' + w.file + '</div></a>';
+  if (w) {
+    document.getElementById('workoutTitle').textContent = 'TODAY\'S WORKOUT: ' + w.name.toUpperCase();
+  }
+
+  const buttonsDiv = document.getElementById('workoutButtons');
+  buttonsDiv.innerHTML = '';
+
+  // Build comprehensive video library (collapsible)
+  let vidListHTML = '<div style="width:100%;margin-top:12px"><details style="font-size:.75em"><summary style="cursor:pointer;color:var(--accent2);font-weight:600">📂 All Workout Videos — T25 + YouTube (tap to open)</summary>';
+  vidListHTML += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:8px">';
+  allVids.sort((a,b) => a.phase.localeCompare(b.phase) || a.name.localeCompare(b.name)).forEach(v => {
+    const link = getVideoLink(v);
+    const icon = getVideoIcon(v.type === 'youtube' ? 'youtube' : 'drive');
+    const source = v.source;
+    vidListHTML += '<a href="' + link + '" target="_blank" style="padding:6px 8px;background:rgba(255,255,255,.03);border-radius:6px;color:var(--text);text-decoration:none;border:1px solid var(--border);font-size:.75em;display:block">' + icon + ' ' + source + ': ' + v.name + '</a>';
+  });
+  vidListHTML += '</div></details></div>';
+
+  // Today's main workout button
+  if (w) {
+    const btn = document.createElement('div');
+    const bgColor = w.type === 'youtube' ? 'rgba(255,0,0,.15)' : 'rgba(0,184,148,.2)';
+    const borderColor = w.type === 'youtube' ? '#ff0000' : 'var(--accent2)';
+    btn.style.cssText = 'flex:1;min-width:110px;padding:10px;background:linear-gradient(135deg,' + bgColor + ',rgba(108,92,231,.1));border:1px solid ' + borderColor + ';border-radius:8px;text-align:center;cursor:pointer;';
+    btn.innerHTML = '<div style="font-size:1.2em;margin-bottom:2px">' + getVideoIcon(w.type) + '</div><div style="font-size:.75em;font-weight:600;color:var(--accent2)">TODAY: ' + w.name.toUpperCase() + '</div><div style="font-size:.65em;color:var(--muted)">' + w.source + '</div>';
+    btn.onclick = function() { window.open(getVideoLink(w), '_blank'); };
+    buttonsDiv.appendChild(btn);
+  }
+
+  // Morning Stretch ROTATION — T25 stretch on odd days, YouTube on even days
+  const isT25Stretch = day % 2 === 1; // odd days = T25, even days = YouTube
+
+  if (isT25Stretch) {
+    // T25 Stretch button
+    const t25Stretch = allVids.find(v => v.name === 'Stretch' && v.type === 'drive');
+    if (t25Stretch) {
+      const btn = document.createElement('div');
+      btn.style.cssText = 'flex:1;min-width:110px;padding:10px;background:linear-gradient(135deg,rgba(253,203,110,.15),rgba(108,92,231,.1));border:1px solid var(--warning);border-radius:8px;text-align:center;cursor:pointer;';
+      btn.innerHTML = '<div style="font-size:1.2em;margin-bottom:2px">🧘</div><div style="font-size:.75em;font-weight:600;color:var(--warning)">MORNING STRETCH</div><div style="font-size:.6em;color:var(--muted)">T25 — 10min</div>';
+      btn.onclick = function() { window.open(getVideoLink(t25Stretch), '_blank'); };
+      document.getElementById('stretchButton').appendChild(btn);
+    }
+  } else {
+    // YouTube Morning Stretch button
+    const stretchBtn = document.createElement('div');
+    stretchBtn.style.cssText = 'flex:1;min-width:110px;padding:10px;background:linear-gradient(135deg,rgba(253,203,110,.15),rgba(108,92,231,.1));border:1px solid var(--warning);border-radius:8px;text-align:center;cursor:pointer;';
+    stretchBtn.innerHTML = '<div style="font-size:1.2em;margin-bottom:2px">🧘</div><div style="font-size:.75em;font-weight:600;color:var(--warning)">MORNING STRETCH</div><div style="font-size:.6em;color:var(--muted)">YouTube — 10min</div>';
+    stretchBtn.onclick = function() { window.open('https://www.youtube.com/watch?v=0gdD6BHFvJI', '_blank'); };
+    document.getElementById('stretchButton').appendChild(stretchBtn);
+  }
+
+  buttonsDiv.insertAdjacentHTML('beforeend', vidListHTML);
 }
 showTodayWorkout();
 </script>
