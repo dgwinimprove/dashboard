@@ -98,36 +98,28 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <!-- TOP ROW: Interviews + Stats -->
 <div class="grid">
 
-<!-- Ashchi — DONE -->
 <div class="interview-card" style="border-color:var(--success);background:linear-gradient(135deg,rgba(0,184,148,.15),rgba(0,206,201,.08))">
 <h3 style="text-decoration:line-through;opacity:.7">✅ ASHCHI HEART & VASCULAR — COMPLETED</h3>
 <div class="meta">IT Support Specialist (On-Site Help Desk) — 3900 University Blvd S, Jacksonville, FL 32216 | $40K–$50K</div>
 <div class="status status-done" style="margin-top:6px">COMPLETED — WAITING FOR RESPONSE</div>
-<div class="note" style="margin-top:8px">💼 Prep topics: TCP/IP, DNS, VPN, AD, GPO, help desk tickets</div>
 </div>
 
-<!-- Cook Tech — TODAY -->
-<div class="interview-card today-highlight" style="border-color:var(--danger);background:linear-gradient(135deg,rgba(225,112,85,.15),rgba(253,203,110,.08))">
-<h3>📞 COOK TECHNOLOGY — PHONE INTERVIEW — TODAY @ 9:30 AM</h3>
-<div class="meta">📅 Nov 12 (Thursday) — 9:30 AM to 10:00 AM EST | IT Smart Hands Field Technician | $17–$25/hr + mileage</div>
-<div style="font-size:.85em;margin-bottom:6px"><strong>🔴 IT'S TODAY — Be ready by 9:20 AM</strong></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📱 Phone charged, quiet space ready</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🔧 Know your tool kit: punch tool, toner, crimper, laptop</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📖 Review: structured cabling, network troubleshooting, data cabling</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🗣️ Prep: personal tool kit, reliable vehicle, 1099 contractor terms</span></div>
-<div class="note">⚠️ 1099 contractor — requires personal tool kit, reliable vehicle | Immediately followed by Pareto at 10:15</div>
+<!-- Cook — DECLINED -->
+<div class="interview-card" style="border-color:var(--muted);opacity:.7">
+<h3 style="text-decoration:line-through">🚫 COOK TECHNOLOGY — DECLINED BY DREW</h3>
+<div class="meta">IT Smart Hands Field Technician | $17–$25/hr + mileage | 1099 Contractor</div>
+<div style="font-size:.85em;margin-bottom:6px"><strong>Reason: Transportation not feasible</strong></div>
+<div class="status status-done" style="margin-top:6px">NOT SELECTED — GOOD CALL</div>
+<div class="note" style="margin-top:8px">1099 contractor requires own tool kit + vehicle. Without transportation, this was never viable. Saved time and energy for better opportunities.</div>
 </div>
 
-<!-- Pareto — TODAY -->
-<div class="interview-card today-highlight" style="border-color:var(--warning);background:linear-gradient(135deg,rgba(253,203,110,.15),rgba(225,112,85,.05))">
-<h3>📹 PARETO CLINIC — VIDEO INTERVIEW — TODAY @ 10:15 AM</h3>
-<div class="meta">📅 Nov 12 (Thursday) — 10:15 AM to 10:45 AM EST | Medical Call Center Representative | $16–$18/hr | In-Person (Jax, FL)</div>
-<div style="font-size:.85em;margin-bottom:6px"><strong>🟡 RIGHT AFTER COOK — Keep phone charged</strong></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📹 Test camera, lighting, quiet background</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📖 Review: HIPAA compliance, medical office procedures</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🗣️ Prep: scheduling, confirming, canceling appointments</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🗣️ Practice: professional phone demeanor, high-volume call scenarios</span></div>
-<div class="note">📹 VIDEO INTERVIEW — test camera, lighting, quiet background before call | Keep phone charged after Cook</div>
+<!-- Pareto — GOOD, POTENTIAL SECOND -->
+<div class="interview-card today-highlight" style="border-color:var(--accent);background:linear-gradient(135deg,rgba(108,92,231,.15),rgba(0,206,201,.08))">
+<h3>📹 PARETO CLINIC — VIDEO INTERVIEW — COMPLETED ✅</h3>
+<div class="meta">Medical Call Center Representative | $16–$18/hr | In-Person (Jax, FL)</div>
+<div style="font-size:.85em;margin-bottom:6px"><strong>🟢 WENT WELL — Awaiting decision, possible second interview</strong></div>
+<div class="status" style="display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7em;font-weight:700;background:rgba(108,92,231,.3);color:var(--accent)">POTENTIAL SECOND INTERVIEW</div>
+<div class="note" style="margin-top:8px">📅 Potential second interview: Monday Nov 16 @ 11:00 AM (TBD, confirm with them) | 📹 In-person at clinic</div>
 </div>
 </div>
 
@@ -138,37 +130,34 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="stats-grid">
 <div class="stat"><div class="number" style="color:var(--success)">✅</div><div class="label">R1 Done</div></div>
 <div class="stat"><div class="number" style="color:var(--success)">✅</div><div class="label">Ashchi Done</div></div>
-<div class="stat"><div class="number" style="color:var(--danger)">📞📹</div><div class="label">2 Interviews Today</div></div>
+<div class="stat"><div class="number" style="color:var(--warning)">🤝</div><div class="label">Pareto 2nd Interview (Mon)</div></div>
 </div>
 </div>
 
 <div class="card">
 <h2><span class="icon">🎯</span> TODAY'S FOCUS AREAS</h2>
-<div class="row"><span class="row-label">Interviews</span><span class="row-value" style="color:var(--danger)">Cook 9:30 + Pareto 10:15</span></div>
-<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">T25 Cardio @ 10:30</span></div>
-<div class="row"><span class="row-label">CCNA</span><span class="row-value" style="color:var(--accent)">Week 2 — 4:00 PM</span></div>
-<div class="row"><span class="row-label">Job Apps</span><span class="row-value" style="color:var(--warning)">Fri Nov 13 — 4:30 PM</span></div>
-<div class="row"><span class="row-label">Nutrition</span><span class="row-value" style="color:var(--success)">Eat before Cook interview</span></div>
+<div class="row"><span class="row-label">Interviews</span><span class="row-value" style="color:var(--success)">Done — Pareto 2nd (Nov 16?)</span></div>
+<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">T25 Cardio + Stretch</span></div>
+<div class="row"><span class="row-label">Nutrition</span><span class="row-value" style="color:var(--danger)">⚠️ EAT NOW — you haven't eaten!</span></div>
+<div class="row"><span class="row-label">CCNA</span><span class="row-value" style="color:var(--accent)">4:00 PM — Week 2 Block 2</span></div>
+<div class="row"><span class="row-label">Job Apps</span><span class="row-value" style="color:var(--warning)">Apply 1-2 more this week</span></div>
 </div>
 </div>
 
 <!-- DAILY CHECKLIST -->
 <div class="grid">
 <div class="card">
-<h2><span class="icon">✅</span> TODAY — DOUBLE INTERVIEW DAY (Nov 12)</h2>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🕐 9:00 AM — Wake up, 16 oz water, quick stretch</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍳 9:15 AM — Quick breakfast before Cook interview</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📞 9:30 AM — COOK TECHNOLOGY PHONE INTERVIEW</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📹 10:15 AM — PARETO CLINIC VIDEO INTERVIEW</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>💪 10:30 AM — T25 Cardio workout</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 11:00 AM — Breakfast/brunch (plate method)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 1:30 PM — Lunch</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 2:00 PM — Rest (save energy for CCNA later)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🎓 4:00 PM — CCNA Study Block 2 (4 videos)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ 4:30 PM — Early dinner (plate method)</span></div>
+<h2><span class="icon">✅</span> TODAY — DONE INTERVIEWS, NOW STRENGTHEN (Nov 12)</h2>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🧘 Morning stretch (10 min — tap button above)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>💪 T25 Cardio workout (today's scheduled workout)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🍽️ EAT — plate method: chicken, rice, vegetables (right now!)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🎓 CCNA Study Block 2 — 4:00 PM (4:00–5:00 PM)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📹 Fiber Optic, Straight-through cables, MAC addresses, switches</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>✏️ Write 3 takeaways after each video</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>📱 Follow up with Pareto — ask about 2nd interview timeline</span></div>
 <div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>🧘 6:00 PM — Wind down, no studying</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 10:00 PM — Sleep early for recovery</span></div>
-<div class="note">💡 ADHD tip: This is a heavy day — two interviews in a row. Eat something before Cook, even if it's small. Hydrate. After Pareto, let yourself rest. CCNA is later, no rush.</div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span>😴 10:00 PM — Sleep for tomorrow</span></div>
+<div class="note">💡 Great day — you crushed two interviews. Now refuel and build your knowledge. CCNA is the ticket that opens doors. Every video watched is progress.</div>
 </div>
 </div>
 
@@ -207,6 +196,28 @@ The plate method with your current pantry is scientifically sound. At 320 lbs, y
 ADHD brains need dopamine loops. Every checklist item checked off is a hit. <strong>Break big tasks into tiny wins.</strong> "Study CCNA" is overwhelming. "Watch ONE video" is doable. You've proven you can do it — now just show up.
 </div>
 </div>
+
+<!-- PARETO FOLLOW-UP STRATEGY -->
+<div class="card">
+<h2><span class="icon">📋</span> PARETO — SECOND INTERVIEW PREP (Likely Monday Nov 16)</h2>
+<div style="font-size:.85em;color:var(--muted);margin-bottom:10px">If they call for a second interview, here's how to prep:</div>
+<div class="coach-note">
+<div class="title">What they'll likely ask:</div>
+• <strong>Medical terminology</strong> — know basic terms (HIPAA, patient, insurance, co-pay, deductible)
+• <strong>Phone etiquette</strong> — "How would you handle an angry patient on the phone?"
+• <strong>Scheduling</strong> — "How do you manage a busy call schedule?"
+• <strong>HIPAA</strong> — "What does HIPAA mean to you?"
+• <strong>AthenaOne/Weave</strong> — they're medical software. Say: "I'm eager to learn your specific tools" if you don't know them yet
+</div>
+<div class="coach-note">
+<div class="title">Your next move TODAY:</div>
+After your study session, send a polite follow-up email to Pareto:
+"Thank you for the interview today. I enjoyed our conversation and remain very interested in the Medical Call Center Representative position. Please let me know if you need any additional information. I look forward to hearing from you."
+This shows professionalism + keeps you top of mind.
+</div>
+</div>
+</div>
+
 <!-- CCNA PROGRESS TRACKER -->
 <div class="grid">
 <div class="card full-width">
@@ -241,20 +252,16 @@ ADHD brains need dopamine loops. Every checklist item checked off is a hit. <str
 </div>
 
 <!-- Weekly breakdown -->
-<div style="font-size:.85em;color:var(--accent2);font-weight:600;margin-bottom:8px">📅 12-WEEK BREAKDOWN:</div>
+<div style="font-size:.85em;color:var(--accent2);font-weight:600;margin-bottom:8px">📅 THIS WEEK'S PLAN:</div>
 
-<div class="milestone"><span class="week">Week 1 (Nov 10–16)</span> ✅ DONE — Network Models. Completed all 100+ NetworkChuck videos.</div>
-<div class="milestone" style="border-left-color:var(--accent)"><span class="week">Week 2 (Nov 17–23)</span> 🔵 IN PROGRESS — Ethernet, IP addressing, subnetting, network diagrams, copper cabling</div>
-<div class="milestone"><span class="week">Week 3 (Nov 24–30)</span> IP & Subnetting deep dive — practice daily until automatic. Lab with Packet Tracer.</div>
-<div class="milestone"><span class="week">Week 4 (Dec 1–7)</span> MAC addresses, switch fundamentals, CAM tables, CDP/LLDP</div>
-<div class="milestone"><span class="week">Week 5 (Dec 8–14)</span> VLANs, trunking, router-on-a-stick</div>
-<div class="milestone"><span class="week">Week 6 (Dec 15–21)</span> STP, wireless security, switching review</div>
-<div class="milestone"><span class="week">Week 7 (Dec 22–28)</span> Routing fundamentals, static routes, routing protocols</div>
-<div class="milestone"><span class="week">Week 8 (Dec 29–Jan 4)</span> OSPF — single area, configuration, troubleshooting</div>
-<div class="milestone"><span class="week">Week 9 (Jan 5–11)</span> IP Services: DHCP, DNS, NTP, NAT</div>
-<div class="milestone"><span class="week">Week 10 (Jan 12–18)</span> Security fundamentals + VPN, QoS</div>
-<div class="milestone"><span class="week">Week 11 (Jan 19–25)</span> Automation & Programmability: APIs, JSON, Python basics</div>
-<div class="milestone"><span class="week">Week 12 (Jan 26–31)</span> 📝 FULL REVIEW: Practice exams, weak areas, timed simulations</div>
+<div class="milestone" style="border-left-color:var(--accent)"><span class="week">Week 2 (Nov 17–23)</span> 🔵 STARTING TOMORROW — Ethernet, IP addressing, subnetting, network diagrams, copper cabling. <strong>Today is rest/recovery after double interview day.</strong></div>
+<div class="milestone"><span class="week">Mon Nov 13</span> 🎓 CCNA Block 3: Fiber Optics, Straight-through/Crossover cables, MAC addresses, Switches</div>
+<div class="milestone"><span class="week">Tue Nov 14</span> 🎓 CCNA Block 4: Switch Ports, CAM Tables, CDP, LLDP (with lab practice)</div>
+<div class="milestone"><span class="week">Wed Nov 15</span> 🎓 Review Week 1 + Week 2 videos. Packet Tracer lab practice.</div>
+<div class="milestone"><span class="week">Thu Nov 16</span> 📹 POTENTIAL Pareto 2nd interview @ 11 AM. CCNA prep on off-hours.</div>
+<div class="milestone"><span class="week">Fri Nov 17</span> 📝 Job applications + CCNA subnetting practice (daily until automatic)</div>
+<div class="milestone"><span class="week">Sat Nov 18</span> 🧪 Weekly review — weak areas, practice tests, lab exercises</div>
+</div>
 
 <div class="note" style="margin-top:12px">
 📁 All videos: <code style="background:var(--border);padding:2px 6px;border-radius:4px;font-size:.75em">C:\Users\KM\Videos\CCNA Vids</code><br>
@@ -262,7 +269,8 @@ ADHD brains need dopamine loops. Every checklist item checked off is a hit. <str
 ⚡ <strong>Watch at 1.25x speed.</strong><br>
 🔑 <strong>Key rule:</strong> Subnetting practice EVERY day until automatic. This is the #1 skill tested.<br>
 🖥️ <strong>Lab goal:</strong> 8–10 hours per week minimum. Use Packet Tracer for hands-on practice.<br>
-📊 <strong>Candidates who lab 8+ hrs/week pass at 78%. Those who skip labs pass at 39%.</strong>
+📊 <strong>Candidates who lab 8+ hrs/week pass at 78%. Those who skip labs pass at 39%.</strong><br>
+💡 <strong>Today (Nov 12):</strong> You did 2 interviews. Do your stretch, workout, EAT, then CCNA 4:00 PM. You've earned a win today.
 </div>
 </div>
 </div>
