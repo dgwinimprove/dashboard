@@ -135,7 +135,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="card">
 <h2><span class="icon">🎯</span> TODAY'S FOCUS AREAS</h2>
 <div class="row"><span class="row-label">Interviews</span><span class="row-value" style="color:var(--accent)">Ashchi 2nd (Tue?) | Pareto Dec</span></div>
-<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">Caroline Girvan Dumbbell HIIT</span></div>
+<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">Caroline Girvan Dumbbell Full Body (30 min)</span></div>
 <div class="row"><span class="row-label">Nutrition</span><span class="row-value" style="color:var(--success)">Plate Method — 2 meals</span></div>
 <div class="row"><span class="row-label">CCNA</span><span class="row-value" style="color:var(--accent)">2:00 PM — CCNA Study Block (90 min)</span></div>
 <div class="row"><span class="row-label">Job Apps</span><span class="row-value" style="color:var(--warning)">4:00 PM — Apply 2-3 positions</span></div>
@@ -147,7 +147,7 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 <div class="card">
 <h2><span class="icon">✅</span> TODAY — STRENGTHEN &amp; CCNA</h2>
 <div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">12:10 PM</span><span class="task-text">🧘 Morning stretch (10 min — tap button above)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">12:20 PM</span><span class="task-text">💪 Caroline Girvan Dumbbell HIIT (30 min)</span></div>
+<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">12:20 PM</span><span class="task-text">💪 Caroline Girvan Dumbbell Full Body (30 min)</span></div>
 <div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">1:00 PM</span><span class="task-text">🍽️ Eat — Plate Method: chicken, rice, vegetables (35 min)</span></div>
 <div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">1:45 PM</span><span class="task-text">💧 Hydrate + Brief Rest (15 min)</span></div>
 <div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">2:00 PM</span><span class="task-text">🎓 CCNA Study Block (90 min)</span></div>
@@ -271,7 +271,7 @@ Send a thank-you follow-up email to Pareto while waiting for the December date:
 🔑 <strong>Key rule:</strong> Subnetting practice EVERY day until automatic. This is the #1 skill tested.<br>
 🖥️ <strong>Lab goal:</strong> 8–10 hours per week minimum. Use Packet Tracer for hands-on practice.<br>
 📊 <strong>Candidates who lab 8+ hrs/week pass at 78%. Those who skip labs pass at 39%.</strong><br>
-💡 <strong>Today (Nov 14 — Saturday):</strong> Caroline Girvan Dumbbell HIIT, CCNA Block 4 at 2 PM, job apps at 4 PM, Pareto follow-up at 5 PM. Consistency wins.
+💡 <strong>Today (Nov 14 — Saturday):</strong> Caroline Girvan Dumbbell Full Body, CCNA Block 4 at 2 PM, job apps at 4 PM, Pareto follow-up at 5 PM. Consistency wins.
 </div>
 </div>
 </div>
@@ -313,12 +313,12 @@ Send a thank-you follow-up email to Pareto while waiting for the December date:
 💾 <strong>T25 All Phases on Google Drive</strong><br>
 📅 <strong>This week's HYBRID SCHEDULE:</strong><br>
 &nbsp;&nbsp;Mon: Caroline Girvan Dumbbell Full Body (YouTube)<br>
-&nbsp;&nbsp;Tue: T25 Cardio<br>
+&nbsp;&nbsp;Tue: T25 Cardio + Walking Pad<br>
 &nbsp;&nbsp;Wed: Caroline Girvan Dumbbell Full Body (YouTube)<br>
-&nbsp;&nbsp;Thu: T25 Lower Focus<br>
+&nbsp;&nbsp;Thu: T25 Lower Focus + Walking Pad<br>
 &nbsp;&nbsp;Fri: Caroline Girvan Dumbbell HIIT (YouTube)<br>
-&nbsp;&nbsp;Sat: T25 Ab Intervals<br>
-&nbsp;&nbsp;Sun: Yoga Recovery (YouTube)<br>
+&nbsp;&nbsp;Sat: Caroline Girvan Dumbbell Full Body (YouTube) — low impact, joint-safe<br>
+&nbsp;&nbsp;Sun: Yoga Recovery (YouTube)
 <br>
 <strong>💡 Coach's note:</strong> Low-impact is your best friend. Walking pad between T25 phases. Consistency > intensity. A 20-min workout you finish beats a 45-min one you skip.
 </div>
@@ -388,13 +388,13 @@ const today=new Date().toDateString();const savedDate=localStorage.getItem('chec
 
 // HYBRID WORKOUT SYSTEM — T25 (Google Drive) + YouTube (Caroline Girvan + Yoga)
 // Weekly Schedule:
-// Mon: Dumbbell Full Body (Caroline Girvan) → T25 Cardio (Google Drive)
+// Mon: Dumbbell Full Body (Caroline Girvan)
 // Tue: T25 Cardio + Walking Pad
-// Wed: Dumbbell Upper/Lower Split (Caroline Girvan) → T25 Lower Focus (Google Drive)
+// Wed: Dumbbell Full Body (Caroline Girvan)
 // Thu: T25 Lower Focus + Walking Pad
-// Fri: Dumbbell HIIT/Full Body (Caroline Girvan) → T25 Ab Intervals (Google Drive)
-// Sat: T25 Ab Intervals + Yoga Stretch
-// Sun: Yoga Flexibility/Recovery (YouTube)
+// Fri: Dumbbell HIIT (Caroline Girvan)
+// Sat: Dumbbell Full Body (Caroline Girvan) — low impact, joint-safe
+// Sun: Yoga Recovery (YouTube)
 
 const workoutVideos = [
   { name: 'Yoga Recovery', type: 'youtube', driveId: '0j0WXjq9bS4', source: 'SarahBethYoga' },  // Sunday
@@ -403,7 +403,7 @@ const workoutVideos = [
   { name: 'Dumbbell Full Body', type: 'youtube', driveId: 'GViX8riaHX4', source: 'Caroline Girvan' },  // Wednesday
   { name: 'T25 Lower Focus', type: 'drive', driveId: '1FDfzH5iCs3L1Qx4SuL-YqZeeDijmE3Wu' },  // Thursday
   { name: 'Dumbbell HIIT', type: 'youtube', driveId: 'rRugP_hkkE0', source: 'Caroline Girvan' },  // Friday
-  { name: 'T25 Ab Intervals', type: 'drive', driveId: '19OJZWowywJN1tRoDr8rlRYFo7E3ihVXt' }  // Saturday
+  { name: 'Dumbbell Full Body', type: 'youtube', driveId: 'GViX8riaHX4', source: 'Caroline Girvan' }  // Saturday
 ];
 
 const allVids = [
