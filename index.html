@@ -76,8 +76,6 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 .ccna-node.done{background:rgba(0,184,148,.2);color:var(--success)}
 .ccna-node.current{background:rgba(108,92,231,.3);color:var(--accent);border:1px solid var(--accent)}
 .ccna-node.upcoming{background:rgba(255,255,255,.03);color:var(--muted)}
-.ccna-milestone-today{border-left:3px solid var(--accent2)!important;position:relative}
-.ccna-milestone-today::before{content:'TODAY';position:absolute;top:-8px;left:6px;background:var(--accent2);color:#000;padding:2px 8px;border-radius:4px;font-size:.65em;font-weight:700;letter-spacing:1px}
 .full-width{grid-column:1/-1}
 .note{font-size:.8em;color:var(--muted);padding:8px 12px;background:rgba(255,255,255,.02);border-radius:8px;margin-top:8px;border-left:3px solid var(--accent)}
 
@@ -256,14 +254,14 @@ Send a thank-you follow-up email to Pareto while waiting for the December date:
 <!-- Weekly breakdown -->
 <div style="font-size:.85em;color:var(--accent2);font-weight:600;margin-bottom:8px">📅 THIS WEEK'S PLAN:</div>
 
-<div class="milestone" style="border-left-color:var(--accent)"><span class="week">Week 2 (Nov 17–23)</span> 🔵 STARTS NEXT TUESDAY Nov 17 — Ethernet, IP addressing, subnetting, network diagrams, copper cabling</div>
-<div class="milestone" style="opacity:.5;text-decoration:line-through"><span class="week">Fri Nov 13</span> ✅ DONE — CCNA Block 3: Fiber Optics, Straight-through/Crossover cables, MAC addresses, Switches</div>
-<div class="milestone ccna-milestone-today" style="border-left-color:var(--accent2)"><span class="week">Sat Nov 14</span> 🎓 CCNA Block 4: Switch Ports, CAM Tables, CDP, LLDP (with lab practice)</div>
-<div class="milestone"><span class="week">Sun Nov 15</span> 🎓 Review Week 1 + Week 2 videos. Packet Tracer lab practice.</div>
-<div class="milestone"><span class="week">Mon Nov 16</span> 📝 Job apps + CCNA subnetting practice</div>
-<div class="milestone"><span class="week">Tue Nov 17</span> 🎓 Week 2 START — Ethernet, IP addressing, subnetting</div>
-<div class="milestone"><span class="week">Wed Nov 18</span> 📹 ASHCHI 2ND INTERVIEW (TBD) + CCNA prep on off-hours</div>
-<div class="milestone"><span class="week">Sat Nov 22</span> 🧪 Weekly review — weak areas, practice tests, lab exercises</div>
+<div class="milestone" style="border-left-color:var(--accent);overflow:visible"><span class="week">Week 2 (Nov 17–23)</span> 🔵 STARTS NEXT TUESDAY Nov 17 — Ethernet, IP addressing, subnetting, network diagrams, copper cabling</div>
+<div class="milestone" style="opacity:.5;text-decoration:line-through;overflow:visible"><span class="week">Fri Nov 13</span> ✅ DONE — CCNA Block 3: Fiber Optics, Straight-through/Crossover cables, MAC addresses, Switches</div>
+<div class="milestone" style="border-left:4px solid var(--accent2);font-weight:700;overflow:visible"><span class="week">Sat Nov 14</span> 🎓 CCNA Block 4: Switch Ports, CAM Tables, CDP, LLDP (with lab practice)</div>
+<div class="milestone" style="overflow:visible"><span class="week">Sun Nov 15</span> 🎓 Review Week 1 + Week 2 videos. Packet Tracer lab practice.</div>
+<div class="milestone" style="overflow:visible"><span class="week">Mon Nov 16</span> 📝 Job apps + CCNA subnetting practice</div>
+<div class="milestone" style="overflow:visible"><span class="week">Tue Nov 17</span> 🎓 Week 2 START — Ethernet, IP addressing, subnetting</div>
+<div class="milestone" style="overflow:visible"><span class="week">Wed Nov 18</span> 📹 ASHCHI 2ND INTERVIEW (TBD) + CCNA prep on off-hours</div>
+<div class="milestone" style="overflow:visible"><span class="week">Sat Nov 22</span> 🧪 Weekly review — weak areas, practice tests, lab exercises</div>
 </div>
 
 <div class="note" style="margin-top:12px">
