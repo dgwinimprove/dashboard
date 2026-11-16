@@ -133,38 +133,17 @@ body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--
 </div>
 
 <div class="card">
-<h2><span class="icon">🎯</span> TODAY'S FOCUS AREAS</h2>
-<div class="row"><span class="row-label">Interviews</span><span class="row-value" style="color:var(--accent)">Ashchi 10:15 AM (Tue) | Pareto Dec</span></div>
-<div class="row"><span class="row-label">Fitness</span><span class="row-value" style="color:var(--accent2)">Dumbbell Full Body (30 min — Caroline Girvan)</span></div>
-<div class="row"><span class="row-label">Nutrition</span><span class="row-value" style="color:var(--success)">Plate Method — 2 meals</span></div>
-<div class="row"><span class="row-label">CCNA</span><span class="row-value" style="color:var(--accent)">9:10 AM — Study Block 1 (50 min)</span></div>
-<div class="row"><span class="row-label">Job Apps</span><span class="row-value" style="color:var(--warning)">11:00 AM + 2:30 PM</span></div>
+<h2><span class="icon">🎯</span> <span id="focusTitle">TODAY'S FOCUS</span></h2>
+<div id="focusContent"></div>
 </div>
 </div>
 
-<!-- DAILY CHECKLIST -->
+<!-- DYNAMIC DAILY CHECKLIST (JS-driven by day-of-week) -->
 <div class="grid">
 <div class="card">
-<h2><span class="icon">✅</span> TODAY — WORKOUT &amp; CCNA</h2>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">8:00 AM</span><span class="task-text">🧘 Morning stretch (10 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">8:10 AM</span><span class="task-text">💪 T25 Cardio Workout (Google Drive, 30 min — no jumping)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">8:40 AM</span><span class="task-text">🍽️ Eat — Plate Method: chicken, rice, vegetables (30 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">9:10 AM</span><span class="task-text">🎓 CCNA Study Block 1 (50 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">10:00 AM</span><span class="task-text">☕ Break (15 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">10:15 AM</span><span class="task-text">🎤 ASHCHI 2ND INTERVIEW (15–20 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">10:35 AM</span><span class="task-text">🧘 Cool down / decompress (25 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">11:00 AM</span><span class="task-text">📱 Job Applications (60 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">12:00 PM</span><span class="task-text">🍽️ Lunch — Plate Method (30 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">12:30 PM</span><span class="task-text">💧 Hydrate + Free time (30 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">1:00 PM</span><span class="task-text">🎓 CCNA Study Block 2 (60 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">2:00 PM</span><span class="task-text">☕ Break — Walk on walking pad (30 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">2:30 PM</span><span class="task-text">📱 Job Applications or CCNA gap-fill (90 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">4:00 PM</span><span class="task-text">🎮 Free time / personal time</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">5:00 PM</span><span class="task-text">🍽️ Dinner — Plate Method (30 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">5:30 PM</span><span class="task-text">🧘 Wind Down — no studying (2 hours)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">7:30 PM</span><span class="task-text">📵 Sleep Prep — no screens (30 min)</span></div>
-<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">8:00 PM</span><span class="task-text">😴 Sleep</span></div>
-<div class="note">💡 Tuesday — Ashchi interview day, T25 Cardio, CCNA study, job apps. You've got this.</div>
+<h2><span class="icon">✅</span> <span id="scheduleDay">TODAY</span> — WORKOUT &amp; CCNA</h2>
+<div id="dailyChecklist"></div>
+<div class="note" id="dailyNote"></div>
 </div>
 </div>
 
@@ -369,10 +348,224 @@ Send a thank-you follow-up email to Pareto while waiting for the December date:
 </div>
 
 <script>
+// ============================================================
+// SCHEDULE DATA — THE SINGLE SOURCE OF TRUTH
+// Cron job updates this object. Dashboard renders based on day.
+// day = 0(Sun)..6(Sat), each has: focus[], events[], note
+// ============================================================
+const schedules = {
+  0: { // Sunday
+    focus: [
+      {label:'Interviews',value:'Pareto Dec (TBD)'},
+      {label:'Fitness',value:'Yoga Recovery (20 min — YouTube)'},
+      {label:'Nutrition',value:'Plate Method — 2 meals'},
+      {label:'CCNA',value:'Review Week 1 + gap-fill (PDFs)'},
+      {label:'Job Apps',value:'Optional — review posted roles'}
+    ],
+    events: [
+      {time:'9:00 AM',task:'🧘 Yoga warm-up (10 min)'},
+      {time:'9:10 AM',task:'🧘 Yoga Recovery (20 min — SarahBethYoga)'},
+      {time:'9:30 AM',task:'🍽️ Breakfast — Plate Method (30 min)'},
+      {time:'10:00 AM',task:'🎓 CCNA Review Week 1 (60 min)'},
+      {time:'11:00 AM',task:'☕ Break (15 min)'},
+      {time:'11:15 AM',task:'🎓 CCNA gap-fill: PDFs (VLANs/STP) (60 min)'},
+      {time:'12:15 PM',task:'🍽️ Lunch — Plate Method (30 min)'},
+      {time:'12:45 PM',task:'💧 Hydrate + Free time (30 min)'},
+      {time:'1:15 PM',task:'📱 Job Applications (60 min)'},
+      {time:'2:15 PM',task:'🎓 CCNA — Packet Tracer lab (60 min)'},
+      {time:'3:15 PM',task:'☕ Walk on walking pad (30 min)'},
+      {time:'3:45 PM',task:'🎮 Free time / personal'},
+      {time:'5:00 PM',task:'🍽️ Dinner — Plate Method (30 min)'},
+      {time:'5:30 PM',task:'🧘 Wind Down — no studying (2 hours)'},
+      {time:'7:30 PM',task:'📵 Sleep Prep — no screens (30 min)'},
+      {time:'8:00 PM',task:'😴 Sleep'}
+    ],
+    note:'💡 Sunday — Recovery day, CCNA review, optional job apps.'
+  },
+  1: { // Monday — WEEK 2 START
+    focus: [
+      {label:'Interviews',value:'Pareto Dec (TBD)'},
+      {label:'Fitness',value:'Dumbbell Full Body (30 min — Caroline Girvan)'},
+      {label:'Nutrition',value:'Plate Method — 2 meals'},
+      {label:'CCNA',value:'WEEK 2 START — Ethernet, IP addressing'},
+      {label:'Job Apps',value:'10:15 AM + 2:15 PM'}
+    ],
+    events: [
+      {time:'8:00 AM',task:'🧘 Morning stretch (10 min)'},
+      {time:'8:10 AM',task:'💪 Dumbbell Full Body Workout (Caroline Girvan — YouTube, 30 min)'},
+      {time:'8:40 AM',task:'🍽️ Breakfast — Plate Method: chicken, rice, vegetables (30 min)'},
+      {time:'9:10 AM',task:'🎓 CCNA Study Block 1 — Ethernet, IP addressing (50 min)'},
+      {time:'10:00 AM',task:'☕ Break — walk / stretch (15 min)'},
+      {time:'10:15 AM',task:'📱 Job Applications (45 min)'},
+      {time:'11:00 AM',task:'🎓 CCNA Study Block 2 — subnetting, network diagrams (60 min)'},
+      {time:'12:00 PM',task:'🍽️ Lunch — Plate Method (30 min)'},
+      {time:'12:30 PM',task:'💧 Hydrate + Free time (30 min)'},
+      {time:'1:00 PM',task:'🎓 CCNA Study Block 3 — copper cabling, MAC addresses (60 min)'},
+      {time:'2:00 PM',task:'☕ Break — Walk on walking pad (15 min)'},
+      {time:'2:15 PM',task:'📱 Job Applications or CCNA gap-fill (90 min)'},
+      {time:'3:45 PM',task:'🎮 Free time / personal'},
+      {time:'5:00 PM',task:'🍽️ Dinner — Plate Method (30 min)'},
+      {time:'5:30 PM',task:'🧘 Wind Down — no studying (2 hours)'},
+      {time:'7:30 PM',task:'📵 Sleep Prep — no screens (30 min)'},
+      {time:'8:00 PM',task:'😴 Sleep'}
+    ],
+    note:'💡 Monday — Week 2 START. Dumbbell Full Body, CCNA (Ethernet/IP/subnetting), job apps.'
+  },
+  2: { // Tuesday — ASHCHI INTERVIEW DAY
+    focus: [
+      {label:'Interviews',value:'Ashchi 10:15 AM!'},
+      {label:'Fitness',value:'T25 Cardio (30 min — no jumping)'},
+      {label:'Nutrition',value:'Plate Method — 2 meals'},
+      {label:'CCNA',value:'IP addressing, network diagrams'},
+      {label:'Job Apps',value:'11:00 AM + 2:15 PM'}
+    ],
+    events: [
+      {time:'8:00 AM',task:'🧘 Morning stretch (10 min)'},
+      {time:'8:10 AM',task:'💪 T25 Cardio Workout (Google Drive, 30 min — NO JUMPING)'},
+      {time:'8:40 AM',task:'🍽️ Breakfast — Plate Method (30 min)'},
+      {time:'9:10 AM',task:'🎓 CCNA Study Block 1 — IP addressing (50 min)'},
+      {time:'10:00 AM',task:'☕ Break — walk / prep (15 min)'},
+      {time:'10:15 AM',task:'🎤 ASHCHI 2ND INTERVIEW (15–20 min — TCP/IP, DNS, VPN, AD, GPO)'},
+      {time:'10:35 AM',task:'🧘 Cool down / decompress (25 min)'},
+      {time:'11:00 AM',task:'📱 Job Applications (60 min)'},
+      {time:'12:00 PM',task:'🍽️ Lunch — Plate Method (30 min)'},
+      {time:'12:30 PM',task:'💧 Hydrate + Free time (30 min)'},
+      {time:'1:00 PM',task:'🎓 CCNA Study Block 2 — network diagrams (60 min)'},
+      {time:'2:00 PM',task:'☕ Break — Walk on walking pad (15 min)'},
+      {time:'2:15 PM',task:'📱 Job Applications or CCNA gap-fill (90 min)'},
+      {time:'3:45 PM',task:'🎮 Free time / personal'},
+      {time:'5:00 PM',task:'🍽️ Dinner — Plate Method (30 min)'},
+      {time:'5:30 PM',task:'🧘 Wind Down — no studying (2 hours)'},
+      {time:'7:30 PM',task:'📵 Sleep Prep — no screens (30 min)'},
+      {time:'8:00 PM',task:'😴 Sleep'}
+    ],
+    note:'💡 Tuesday — ASHCHI INTERVIEW at 10:15 AM. Prep: TCP/IP, DNS, VPN, AD, GPO. T25 Cardio. Sleep 8 PM.'
+  },
+  3: { // Wednesday
+    focus: [
+      {label:'Interviews',value:'Pareto Dec (TBD)'},
+      {label:'Fitness',value:'Dumbbell Full Body (30 min — Caroline Girvan)'},
+      {label:'Nutrition',value:'Plate Method — 2 meals'},
+      {label:'CCNA',value:'Network diagrams, cabling types'},
+      {label:'Job Apps',value:'10:15 AM + 2:15 PM'}
+    ],
+    events: [
+      {time:'8:00 AM',task:'🧘 Morning stretch (10 min)'},
+      {time:'8:10 AM',task:'💪 Dumbbell Full Body Workout (Caroline Girvan — YouTube, 30 min)'},
+      {time:'8:40 AM',task:'🍽️ Breakfast — Plate Method (30 min)'},
+      {time:'9:10 AM',task:'🎓 CCNA Study Block 1 — network diagrams (50 min)'},
+      {time:'10:00 AM',task:'☕ Break (15 min)'},
+      {time:'10:15 AM',task:'📱 Job Applications (45 min)'},
+      {time:'11:00 AM',task:'🎓 CCNA Study Block 2 — cabling types (60 min)'},
+      {time:'12:00 PM',task:'🍽️ Lunch — Plate Method (30 min)'},
+      {time:'12:30 PM',task:'💧 Hydrate + Free time (30 min)'},
+      {time:'1:00 PM',task:'🎓 CCNA Study Block 3 — MAC addresses, switches (60 min)'},
+      {time:'2:00 PM',task:'☕ Break — Walk on walking pad (15 min)'},
+      {time:'2:15 PM',task:'📱 Job Applications or CCNA gap-fill (90 min)'},
+      {time:'3:45 PM',task:'🎮 Free time / personal'},
+      {time:'5:00 PM',task:'🍽️ Dinner — Plate Method (30 min)'},
+      {time:'5:30 PM',task:'🧘 Wind Down — no studying (2 hours)'},
+      {time:'7:30 PM',task:'📵 Sleep Prep — no screens (30 min)'},
+      {time:'8:00 PM',task:'😴 Sleep'}
+    ],
+    note:'💡 Wednesday — Dumbbell Full Body, CCNA, job apps.'
+  },
+  4: { // Thursday
+    focus: [
+      {label:'Interviews',value:'Pareto Dec (TBD)'},
+      {label:'Fitness',value:'T25 Lower Focus (30 min — no jumping)'},
+      {label:'Nutrition',value:'Plate Method — 2 meals'},
+      {label:'CCNA',value:'Switching fundamentals'},
+      {label:'Job Apps',value:'10:15 AM + 2:15 PM'}
+    ],
+    events: [
+      {time:'8:00 AM',task:'🧘 Morning stretch (10 min)'},
+      {time:'8:10 AM',task:'💪 T25 Lower Focus (Google Drive, 30 min — NO JUMPING)'},
+      {time:'8:40 AM',task:'🍽️ Breakfast — Plate Method (30 min)'},
+      {time:'9:10 AM',task:'🎓 CCNA Study Block 1 — switching (50 min)'},
+      {time:'10:00 AM',task:'☕ Break (15 min)'},
+      {time:'10:15 AM',task:'📱 Job Applications (45 min)'},
+      {time:'11:00 AM',task:'🎓 CCNA Study Block 2 — VLAN concepts (60 min)'},
+      {time:'12:00 PM',task:'🍽️ Lunch — Plate Method (30 min)'},
+      {time:'12:30 PM',task:'💧 Hydrate + Free time (30 min)'},
+      {time:'1:00 PM',task:'🎓 CCNA Study Block 3 — Packet Tracer lab (60 min)'},
+      {time:'2:00 PM',task:'☕ Break — Walk on walking pad (15 min)'},
+      {time:'2:15 PM',task:'📱 Job Applications or CCNA gap-fill (90 min)'},
+      {time:'3:45 PM',task:'🎮 Free time / personal'},
+      {time:'5:00 PM',task:'🍽️ Dinner — Plate Method (30 min)'},
+      {time:'5:30 PM',task:'🧘 Wind Down — no studying (2 hours)'},
+      {time:'7:30 PM',task:'📵 Sleep Prep — no screens (30 min)'},
+      {time:'8:00 PM',task:'😴 Sleep'}
+    ],
+    note:'💡 Thursday — T25 Lower Focus, CCNA switching, job apps.'
+  },
+  5: { // Friday
+    focus: [
+      {label:'Interviews',value:'Pareto Dec (TBD)'},
+      {label:'Fitness',value:'Dumbbell HIIT (30 min — Caroline Girvan)'},
+      {label:'Nutrition',value:'Plate Method — 2 meals'},
+      {label:'CCNA',value:'STP concepts, wireless'},
+      {label:'Job Apps',value:'10:15 AM + 2:15 PM'}
+    ],
+    events: [
+      {time:'8:00 AM',task:'🧘 Morning stretch (10 min)'},
+      {time:'8:10 AM',task:'💪 Dumbbell HIIT (Caroline Girvan — YouTube, 30 min)'},
+      {time:'8:40 AM',task:'🍽️ Breakfast — Plate Method (30 min)'},
+      {time:'9:10 AM',task:'🎓 CCNA Study Block 1 — STP concepts (50 min)'},
+      {time:'10:00 AM',task:'☕ Break (15 min)'},
+      {time:'10:15 AM',task:'📱 Job Applications (45 min)'},
+      {time:'11:00 AM',task:'🎓 CCNA Study Block 2 — wireless (60 min)'},
+      {time:'12:00 PM',task:'🍽️ Lunch — Plate Method (30 min)'},
+      {time:'12:30 PM',task:'💧 Hydrate + Free time (30 min)'},
+      {time:'1:00 PM',task:'🎓 CCNA Study Block 3 — review (60 min)'},
+      {time:'2:00 PM',task:'☕ Break — Walk on walking pad (15 min)'},
+      {time:'2:15 PM',task:'📱 Job Applications or CCNA gap-fill (90 min)'},
+      {time:'3:45 PM',task:'🎮 Free time / personal'},
+      {time:'5:00 PM',task:'🍽️ Dinner — Plate Method (30 min)'},
+      {time:'5:30 PM',task:'🧘 Wind Down — no studying (2 hours)'},
+      {time:'7:30 PM',task:'📵 Sleep Prep — no screens (30 min)'},
+      {time:'8:00 PM',task:'😴 Sleep'}
+    ],
+    note:'💡 Friday — Dumbbell HIIT, CCNA STP/wireless, job apps.'
+  },
+  6: { // Saturday
+    focus: [
+      {label:'Interviews',value:'Pareto Dec (TBD)'},
+      {label:'Fitness',value:'Dumbbell Full Body (30 min — Caroline Girvan)'},
+      {label:'Nutrition',value:'Plate Method — 2 meals'},
+      {label:'CCNA',value:'Weekly review — weak areas'},
+      {label:'Job Apps',value:'10:55 AM'}
+    ],
+    events: [
+      {time:'8:00 AM',task:'🧘 Morning stretch (10 min)'},
+      {time:'8:10 AM',task:'💪 Dumbbell Full Body (Caroline Girvan — YouTube, 30 min — low impact)'},
+      {time:'8:40 AM',task:'🍽️ Breakfast — Plate Method (30 min)'},
+      {time:'9:10 AM',task:'🎓 CCNA Review Week (90 min) — weak areas, practice tests'},
+      {time:'10:40 AM',task:'☕ Break (15 min)'},
+      {time:'10:55 AM',task:'📱 Job Applications (45 min)'},
+      {time:'11:40 AM',task:'🍽️ Lunch — Plate Method (30 min)'},
+      {time:'12:10 PM',task:'💧 Hydrate + Free time (30 min)'},
+      {time:'12:40 PM',task:'🎓 CCNA Packet Tracer lab (60 min)'},
+      {time:'1:40 PM',task:'☕ Walk on walking pad (30 min)'},
+      {time:'2:10 PM',task:'🎮 Free time / personal'},
+      {time:'5:00 PM',task:'🍽️ Dinner — Plate Method (30 min)'},
+      {time:'5:30 PM',task:'🧘 Wind Down — no studying (2 hours)'},
+      {time:'7:30 PM',task:'📵 Sleep Prep — no screens (30 min)'},
+      {time:'8:00 PM',task:'😴 Sleep'}
+    ],
+    note:'💡 Saturday — Weekly CCNA review, Packet Tracer lab. Low impact workout.'
+  }
+};
+
+// ============================================================
+// DAILY RENDERING — reads day-of-week, pulls from schedules[day]
+// ============================================================
+const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
 // Date display
 function updateDate(){const d=new Date();const opts={weekday:'long',year:'numeric',month:'long',day:'numeric'};document.getElementById('currentDate').textContent=d.toLocaleDateString('en-US',opts)}updateDate()
 
-// Checkbox toggle
+// Checklist toggle
 function toggleCheck(el){const cb=el.querySelector('input[type=checkbox]');cb.checked=!cb.checked;el.classList.toggle('checked',cb.checked);saveChecklist()}
 
 // Timer
@@ -454,6 +647,29 @@ function getVideoSource(video) {
   return '';
 }
 
+function renderDailySchedule() {
+  const day = new Date().getDay();
+  const schedule = schedules[day];
+  if (!schedule) return;
+
+  document.getElementById('scheduleDay').textContent = 'TODAY — ' + dayNames[day];
+
+  // Focus areas
+  const focusEl = document.getElementById('focusContent');
+  focusEl.innerHTML = schedule.focus.map(function(f) {
+    return '<div class="row"><span class="row-label">' + f.label + '</span><span class="row-value" style="color:var(--accent)">' + f.value + '</span></div>';
+  }).join('');
+
+  // Checklist
+  const listEl = document.getElementById('dailyChecklist');
+  listEl.innerHTML = schedule.events.map(function(e) {
+    return '<div class="checklist-item" onclick="toggleCheck(this)"><input type="checkbox"><span class="timestamp">' + e.time + '</span><span class="task-text">' + e.task + '</span></div>';
+  }).join('');
+
+  // Note
+  document.getElementById('dailyNote').innerHTML = schedule.note;
+}
+
 function showTodayWorkout() {
   const day = new Date().getDay(); // 0=Sunday, 1=Monday, ..., 6=Saturday
   document.getElementById('workoutTitle').textContent = 'TODAY\'S WORKOUT';
@@ -513,6 +729,7 @@ function showTodayWorkout() {
 
   buttonsDiv.insertAdjacentHTML('beforeend', vidListHTML);
 }
+renderDailySchedule();
 showTodayWorkout();
 </script>
 
